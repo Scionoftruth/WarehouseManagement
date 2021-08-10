@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wm</groupId>
-	<artifactId>WasteManagement</artifactId>
+	<artifactId>WarehouseManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WasteManagement</name>
+	<name>WarehouseManagement</name>
 	<description>Project 2 Spring Boot w/Angular</description>
 	<properties>
 		<java.version>1.8</java.version>

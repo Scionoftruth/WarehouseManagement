@@ -16,7 +16,6 @@ import javax.persistence.criteria.Order;
 @Entity
 @Table(name="customers")
 public class Customer {
-
 	@Id
 	@Column(name="user_id", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)

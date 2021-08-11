@@ -1,21 +1,16 @@
 package com.wm.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.criteria.Order;
 
 @Entity
-@Table(name="customers")
-public class Customer {
+@Table(name="users")
+public class User {
+
 	@Id
 	@Column(name="user_id", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,29 +21,29 @@ public class Customer {
 	
 	@Column(name="last_name", nullable=false)
 	private String lastname;
-
+	
+	@Column(name="username", nullable=false)
+	private String username;
+	
 	@Column(name="email", nullable=false, unique=true)
 	private String email;
 	
-	@Column(name="address", nullable=false)
-	private String address;
-	
-	@OneToMany(mappedBy="customer", fetch=FetchType.LAZY)
-	private List<Order> orders = new ArrayList<Order>();
+	@Column(name="password", nullable=false)
+	private String password;
 
-	public Customer() {
+	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(int id, String firstname, String lastname, String email, String address, List<Order> orders) {
+	public User(int id, String firstname, String lastname, String username, String email, String password) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.username = username;
 		this.email = email;
-		this.address = address;
-		this.orders = orders;
+		this.password = password;
 	}
 
 	public int getId() {
@@ -75,6 +70,14 @@ public class Customer {
 		this.lastname = lastname;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -83,27 +86,18 @@ public class Customer {
 		this.email = email;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
-				+ ", address=" + address + ", orders=" + orders + "]";
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
+				+ ", email=" + email + ", password=" + password + "]";
 	}
-	
 	
 }

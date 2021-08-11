@@ -1,10 +1,15 @@
 package com.wm.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +35,12 @@ public class User {
 	
 	@Column(name="password", nullable=false)
 	private String password;
+	
+	@OneToMany(mappedBy="author",fetch=FetchType.LAZY)
+	private List<Order> author = new ArrayList<Order>();
+
+	@OneToMany(mappedBy="resolver",fetch=FetchType.LAZY)
+	private List<Order> resolver = new ArrayList<Order>();
 
 	public User() {
 		super();
@@ -92,6 +103,22 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public List<Order> getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(List<Order> author) {
+		this.author = author;
+	}
+
+	public List<Order> getResolver() {
+		return resolver;
+	}
+
+	public void setResolver(List<Order> resolver) {
+		this.resolver = resolver;
 	}
 
 	@Override

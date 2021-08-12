@@ -17,7 +17,7 @@ import javax.persistence.criteria.Order;
 @Table(name="customers")
 public class Customer {
 	@Id
-	@Column(name="user_id", nullable=false)
+	@Column(name="customer_id", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
@@ -44,6 +44,15 @@ public class Customer {
 	public Customer(int id, String firstname, String lastname, String email, String address, List<Order> orders) {
 		super();
 		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.address = address;
+		this.orders = orders;
+	}
+
+	public Customer(String firstname, String lastname, String email, String address, List<Order> orders) {
+		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;

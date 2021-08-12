@@ -21,7 +21,7 @@ public class Order {
 	private int id;
 	
 	@Column(name="item_name", nullable=false)
-	private String iname;
+	private Item iname;
 	
 	@Column(name="quantity", nullable=false)
 	private int quantity;
@@ -42,7 +42,7 @@ public class Order {
 		
 	}
 
-	public Order(int id, String iname, int quantity, User author, User resolver, OrderStatus status) {
+	public Order(int id, Item iname, int quantity, User author, User resolver, OrderStatus status) {
 		super();
 		this.id = id;
 		this.iname = iname;
@@ -52,7 +52,7 @@ public class Order {
 		this.status = status;
 	}
 
-	public Order(String iname, int quantity, User author, User resolver, OrderStatus status) {
+	public Order(Item iname, int quantity, User author, User resolver, OrderStatus status) {
 		super();
 		this.iname = iname;
 		this.quantity = quantity;
@@ -61,7 +61,7 @@ public class Order {
 		this.status = status;
 	}
 
-	public Order(String iname, int quantity, User author, OrderStatus status) {
+	public Order(Item iname, int quantity, User author, OrderStatus status) {
 		super();
 		this.iname = iname;
 		this.quantity = quantity;
@@ -69,7 +69,7 @@ public class Order {
 		this.status = status;
 	}
 
-	public Order(int id, String iname, int quantity, User author, OrderStatus status) {
+	public Order(int id, Item iname, int quantity, User author, OrderStatus status) {
 		super();
 		this.id = id;
 		this.iname = iname;
@@ -86,11 +86,11 @@ public class Order {
 		this.id = id;
 	}
 
-	public String getIname() {
+	public Item getIname() {
 		return iname;
 	}
 
-	public void setIname(String iname) {
+	public void setIname(Item iname) {
 		this.iname = iname;
 	}
 

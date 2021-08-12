@@ -4,10 +4,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.wm.enums.ItemType;
 import com.wm.enums.OStatus;
 import com.wm.enums.PStatus;
+import com.wm.models.Item;
 import com.wm.models.ItemTypes;
 import com.wm.models.Money;
+import com.wm.models.Order;
 import com.wm.models.OrderStatus;
 import com.wm.models.PaymentStatus;
+import com.wm.models.User;
 import com.wm.repository.CustOrderRepo;
 import com.wm.repository.CustomerRepo;
 import com.wm.repository.ItemRepo;
@@ -58,11 +61,14 @@ public class MainDriver {
 		PaymentStatus ps2 = new PaymentStatus(1,PStatus.UNPAID);
 		psRepo.insert(ps2);
 		
-		Item i = new Item()
+		Item i = new Item(it1,"Sponge",1.5,5);
+		iRepo.insert(i);
 		
+		User u = new User("Test", "User", "Tester", "test@mail.com", "password");
+		uRepo.insert(u);
 		
-		Order o = new Order()
-		
+		Order o = new Order(i,3,u,os2);
+		oRepo.insert(o);
 	}
 	
 	

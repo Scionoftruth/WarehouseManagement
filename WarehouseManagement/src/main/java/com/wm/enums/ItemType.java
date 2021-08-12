@@ -1,7 +1,12 @@
 package com.wm.enums;
 
-public class ItemType {
+public enum ItemType {
 
-	
+	HOMEGOODS,
+	CLEANINGSUPPLIES,
+	COOKING,
+	INDUSTRY,
+	SPORTINGEQUIPMENT,
+	OTHER
 	
 }

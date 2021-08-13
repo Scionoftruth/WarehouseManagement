@@ -48,7 +48,7 @@ public class Customer {
 	@Column(name="cust_zipcode", nullable=false)
 	private int zipCode;
 	
-	@Column(name="cust_email", nullable=false)
+	@Column(name="cust_email", nullable=false, unique=true)
 	private String email;
 
 	public Customer(String firstName, String lastName, String address, String city, String state, int zipCode,

@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import com.wm.enums.RoleEnum;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -22,18 +23,28 @@ import lombok.ToString;
 @Entity
 @Table(name="employee")
 
-public class Order {
+public class Employee {
+	
+	@Id
+	@Column(name="emp_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int empId;
 
-	@Id
-	@Column(name="order_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int orderId;
+	@Column(name="emp_firstname", nullable=false)
+	private String firstName;
 	
-	@Column(name="order_quantity", nullable=false)
-	private int orderQty;
+	@Column(name="emp_lastname", nullable=false)
+	private String lastName;
 	
-	@Id
-	@ManyToOne(cascade= CascadeType.ALL)
-	private Item itemId;
+	@Column(name="emp_email", nullable=false)
+	private String email;
+	
+	@Column(name="emp_password", nullable=false)
+	private String password;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private RoleEnum role;
+	
+	
 	
 }

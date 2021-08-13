@@ -1,10 +1,7 @@
 package com.wm.models;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -14,6 +11,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import com.wm.enums.StatusEnum;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -22,18 +20,19 @@ import lombok.ToString;
 @Entity
 @Table(name="employee")
 
-public class Order {
+public class Transaction {
 
-	@Id
-	@Column(name="order_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int orderId;
 	
-	@Column(name="order_quantity", nullable=false)
-	private int orderQty;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Employee empId;
 	
 	@Id
-	@ManyToOne(cascade= CascadeType.ALL)
-	private Item itemId;
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Order orderId;
 	
+	@Id
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Customer custId;
+	
+	private StatusEnum status;
 }

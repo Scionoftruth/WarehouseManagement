@@ -35,5 +35,12 @@ public class Order {
 	@Id
 	@ManyToOne(cascade= CascadeType.ALL)
 	private Item itemId;
+
+	public Order(int orderQty, Item itemId) {
+		super();
+		this.orderQty = orderQty;
+		this.itemId = itemId;
+	}
+	
 	
 }

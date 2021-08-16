@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,11 +22,12 @@ import com.wm.enums.StatusEnum;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="employee")
+@Table(int i, int jname="transactions")
+@IdClass(TransactionId.class)
 
 public class Transaction {
 
-	
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Employee empId;
 	
@@ -40,4 +42,10 @@ public class Transaction {
 	@Enumerated(EnumType.STRING)
 	@Column(name="status", nullable=false)
 	private StatusEnum status;
+
+	public Transaction(int custId, int orderId) {
+		this.orderId = orderId;
+		this.custId = custId;
+		this.status = StatusEnum.SUBMITTED;
+	}
 }

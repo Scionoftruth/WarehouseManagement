@@ -20,7 +20,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="employee")
+@Table(name="i_order")
 
 public class Order {
 
@@ -32,7 +32,7 @@ public class Order {
 	@Column(name="order_quantity", nullable=false)
 	private int orderQty;
 	
-	@Id
+	
 	@ManyToOne(cascade= CascadeType.ALL)
 	private Item itemId;
 

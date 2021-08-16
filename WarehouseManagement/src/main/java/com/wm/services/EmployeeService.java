@@ -25,8 +25,8 @@ public class EmployeeService {
 		}
 	}
 	
-	public Employee loginEmployee(String username, String password) {
-		Employee em = eDao.findByUsername(username);
+	public Employee loginEmployee(int employeeId, String password) {
+		Employee em = eDao.findById(employeeId);
 		if(em==null) {
 			return null;
 		}else {
@@ -38,8 +38,8 @@ public class EmployeeService {
 		}
 	}
 	
-	public Employee displayEmployee(String username) {
-		Employee em = eDao.findByUsername(username);
+	public Employee displayEmployee(int employeeId) {
+		Employee em = eDao.findById(employeeId);
 		if(em == null) {
 			return null;
 		}else {

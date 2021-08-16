@@ -29,5 +29,21 @@ public class CustomerService {
 	public Customer getCustomerById(int id) {
 		return cDao.getById(id);
 	}
+	public Customer getCustomerByEmail(String email) {
+		return cDao.findByEmail(email);
+	}
 	
+public Customer Verify(Customer cust) {
+	try {
+		Customer newcust = cDao.findByEmail(cust.getEmail());
+		if (newcust == null) {
+			cDao.save(cust);
+			newcust = cDao.findByEmail(cust.getEmail());
+		}
+		return newcust;
+		} catch (Exception e){
+			}
+	return null;
+	}
+
 }

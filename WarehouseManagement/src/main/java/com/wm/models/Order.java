@@ -29,7 +29,7 @@ public class Order {
 
 
 	@Id
-	@Column(name="order_id")
+	@Column(name="order_id") // dummy value
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
 	

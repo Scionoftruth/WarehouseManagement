@@ -44,48 +44,46 @@ public class CustomerController {
 
 	 //@PostMapping("/neworder")
 
-
-
 	 // when you make a new order, get the customer info, and try to locate in the database
 	 //if there is a match, fill in the remaining info, if not, add to database and fill info
 	 //record the customer ID on the transaction table and get the order number from transaction
 	 //set the transaction to submitted
 	 //add the order to the order table
-	@PostMapping("/neworder")
-	
-	public ResponseEntity<String> newOrder(@RequestBody LinkedHashMap<Item, Item> order){  
+	@PostMapping("/customer/neworder")
+	public ResponseEntity<String> newOrder(@RequestBody LinkedHashMap<String, String> order){  
 	    //This needs to be a list of item id alternated with quantity
 		List<Item> orderList = new ArrayList<Item>();
 		Transaction trans = tServ.makeNew();
 		Order next = new Order();
 		for (int i = 0; i < orderList.size(); i++) {
 			// add the item to the order
-			next = new Order(trans.getOrderId(), orderList.get(i).getInvQuantity(), orderList.get(i));
-			oServ.addOrder(next);
-			
+			next = new Order(trans.getTransId(), orderList.get(i).getInvQuantity(), orderList.get(i));
+			oServ.addOrder(next);	
 		}
+		mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
+		return new ResponseEntity<>("Order Created",HttpStatus.OK);
 	}
-	
-@PostMapping("/login")
-	
-		public ResponseEntity<User> loginUser (@RequestBody LinkedHashMap<String, String> user) {	
-		User u = uServ.loginUser(user.get("username"), user.get("password"));
-	if (u == null) {
-		return new ResponseEntity<User>(u, HttpStatus.FORBIDDEN);
-	}return new ResponseEntity<User>(u, HttpStatus.OK);
-	
+ 
+	@PostMapping("/customer/login")
+	public ResponseEntity<Customer> loginCustomer(@RequestBody LinkedHashMap<String, String> customer) {	
+		Customer c = cServ.loginUser(customer.get("username"), customer.get("password"));
+		if (c == null) {
+			return new ResponseEntity<Customer>(c, HttpStatus.FORBIDDEN);
+		}
+		return new ResponseEntity<Customer>(c, HttpStatus.OK);
+	}
  
 
-	@GetMapping("/invoice")
-	public ResponseEntity<Customer> invoice(@RequestBody LinkedHashMap<,String> int custId) {
-		Customer c = cServ.getCustomerById(custId);
+	@GetMapping("/customer/invoice")
+	public ResponseEntity<Customer> invoice(@RequestBody LinkedHashMap<String,String> custId) {
+		Customer c = cServ.getCustomerById(Integer.parseInt(custId.get("custId")));
 		if (c==null) {
 			return new ResponseEntity<Customer>(c, HttpStatus.NOT_FOUND);
 		}
-		mailServ.sendInvMail(oServ.getAll(custId), custId);
+		mailServ.sendInvMail(Integer.getInteger(custId.get("custId")));
 		return new ResponseEntity<Customer>(c, HttpStatus.OK);
 	}
-}
+ }
 
 
 

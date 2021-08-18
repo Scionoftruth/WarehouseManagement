@@ -17,7 +17,7 @@ public class CustomerService {
  
 	private CustomerRepo cDao;
 	
-	private boolean registerCustomer(Customer c) {
+	public boolean registerCustomer(Customer c) {
 		try {
 			cDao.save(c);
 			return true;

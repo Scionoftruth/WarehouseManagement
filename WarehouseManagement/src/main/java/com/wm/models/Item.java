@@ -34,12 +34,16 @@ public class Item {
 	
 	@Column(name="inv_quantity")
 	private int invQuantity;
+	
+	@Column(name="inv_buffer")
+	private int buffer;
 
 	public Item(String itemName, float itemPrice, int invQuantity) {
 		super();
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.invQuantity = invQuantity;
+		this.buffer = 0;
 	}
 
 	public Item(String itemName, float itemPrice) {
@@ -47,7 +51,9 @@ public class Item {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.invQuantity = 0;
+		this.buffer = 0;
 	}
+	
 	
 	
 	

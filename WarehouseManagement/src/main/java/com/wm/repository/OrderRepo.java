@@ -9,8 +9,8 @@ import com.wm.models.Order;
 @Repository
 public interface OrderRepo extends JpaRepository<Order, Integer>{
 	public List<Order> findAll();
-	public Order findByOrderId(int id);
-	
+	public List<Order> findByTransId(int id);
+	public Order findBytransId(int id);
 
 
 }

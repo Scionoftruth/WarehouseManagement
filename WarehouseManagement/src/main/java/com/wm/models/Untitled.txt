@@ -18,3 +18,30 @@ order id  | cust id  | emp id  | Status
 PK           FK          FK         
 1            2           3       complete
 2            3           3       pending
+
+if item qty - item promice > 0
+
+Order made: 
+
+order qty in order
+item promise + in item
+
+Order canceled:
+
+order promise - in item
+
+Order updated:
+
+order qty and order promise +-
+
+Order filled:
+
+item promise in item -
+item qty in item -
+
+When order made remove from Item Quant for the amount of order quant
+
+When approved:
+
+buffer -= order quanity
+item quantity -= buffer

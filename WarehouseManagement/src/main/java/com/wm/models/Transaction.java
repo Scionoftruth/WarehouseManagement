@@ -1,5 +1,7 @@
 package com.wm.models;
 
+import java.util.Random;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +34,7 @@ public class Transaction {
 	@Id
 	@Column(name="trans_id")
 //	@ManyToOne(cascade=CascadeType.ALL)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int transId;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -48,5 +50,6 @@ public class Transaction {
 	public Transaction(Customer custId) {
 		this.custId = custId;
 		this.status = StatusEnum.SUBMITTED;
+		this.transId = (new Random().nextInt(90000)+ 9999);
 	}
 }

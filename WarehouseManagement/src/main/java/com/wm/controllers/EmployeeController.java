@@ -32,11 +32,13 @@ import lombok.NoArgsConstructor;
  @NoArgsConstructor
 public class EmployeeController {
 	//Update customer information
-	//View all submitted/cancelled/complete  orders
 	
-	//Accept an order
-	//View their accepted orders
+	//View all submitted/cancelled/complete  orders- in TransactionController
+	//View their accepted orders- in TransactionController
+	
 	//Cancel or complete orders
+	
+	
 	//View orders of a specific customer
 	//Check stock levels by item
 	//Add new stock, including new item 
@@ -57,7 +59,7 @@ public class EmployeeController {
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<String> createUser(@RequestBody LinkedHashMap<String, String> employee){
+	public ResponseEntity<String> createEmployee(@RequestBody LinkedHashMap<String, String> employee){
 		System.out.println(employee);
 		
 		RoleEnum role = RoleEnum.valueOf(employee.get("role").toUpperCase());
@@ -72,7 +74,48 @@ public class EmployeeController {
 		}
 	}
 	
+	//Accept an order
+	@PostMapping("/accept")
+	public ResponseEntity<String> acceptOrder(@RequestBody LinkedHashMap<String, String> order){
+		
+		boolean isAccept = eServ.acceptOrder( Integer.parseInt(order.get("orderId")), Integer.parseInt(order.get("employeeId")) );
+		
+		if (isAccept){
+			return new ResponseEntity<>("Order has been Accepted marked PENDING", HttpStatus.OK);
+		} else {
+      		return new ResponseEntity<>("Order cannot be found in the database", HttpStatus.NOT_MODIFIED);
+    	}
+		
+	}
+	//Complete order
+	@PostMapping("/complete")
+	public ResponseEntity<String> completeOrder(@RequestBody LinkedHashMap<String, String> order){
+		
+		boolean isComplete = eServ.completeOrder( Integer.parseInt(order.get("orderId")), Integer.parseInt(order.get("employeeId")) );
+		
+		if (isComplete){
+			return new ResponseEntity<>("Order has marked COMPLETED", HttpStatus.OK);
+		} else {
+      		return new ResponseEntity<>("Order cannot be found in the database", HttpStatus.NOT_MODIFIED);
+    	}
+		
+	}
+	
+	//Cancel order
+	@PostMapping("/complete")
+	public ResponseEntity<String> cancelOrder(@RequestBody LinkedHashMap<String, String> order){
+		
+		boolean isCancel = eServ.cancelOrder( Integer.parseInt(order.get("orderId")), Integer.parseInt(order.get("employeeId")) );
+		
+		if (isCancel){
+			return new ResponseEntity<>("Order has marked CANCELED", HttpStatus.OK);
+		} else {
+      		return new ResponseEntity<>("Order cannot be found in the database", HttpStatus.NOT_MODIFIED);
+    	}
+		
+	}
 
 	//logout
+	
 
 }

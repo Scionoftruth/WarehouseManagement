@@ -25,13 +25,14 @@ public class OrderService {
 
 	public Order getOrderById(int num) {
 		return oDao.getById(num);
-	
-	//public boolean update(Order order) {
-		
-	//}
-	
-	
 	}
+	
+	
+	public void addOrder(Order order) {
+		oDao.save(order);
+	}
+	
+	
 
 	public Object getAll(int custId) {
 		//this should grab all unresolved orders based on cust id

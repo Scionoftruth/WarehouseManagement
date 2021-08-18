@@ -1,5 +1,7 @@
 package com.wm.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,26 @@ public class TransactionService {
 		}
 	}
 	
+	public List<Transaction> getAllTransactions() {
+		return tDao.findAll();
+	}
 	
+	public boolean getTransactionById(int id) {
+		try {
+			tDao.getById(id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
+	public Transaction makeNew() {
+		Transaction trans = new Transaction();
+		if (tDao.findByOrderId(trans.getOrderId()) != null){
+			makeNew();
+		}
+		return trans;
+
+	}
 
 }

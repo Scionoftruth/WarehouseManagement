@@ -50,9 +50,12 @@ public class Customer {
 	
 	@Column(name="cust_email", nullable=false, unique=true)
 	private String email;
+	
+	@Column(name="cust_password")
+	private String password;
 
 	public Customer(String firstName, String lastName, String address, String city, String state, int zipCode,
-			String email) {
+			String email, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -61,10 +64,6 @@ public class Customer {
 		this.state = state;
 		this.zipCode = zipCode;
 		this.email = email;
+		this.password = password;
 	}
-	
-	
-	
-	
-	
 }

@@ -25,6 +25,16 @@ public class CustomerService {
 			return false;
 		}
 	}
+
+	public Customer loginUser(String email, String password) {
+		Customer u = cDao.findByEmail(email);
+
+		if ((u == null) | (!u.getPassword().equals(password))) {
+			return null;
+		}
+		return u;
+	}
+
 	
 	public Customer getCustomerById(int id) {
 		return cDao.getById(id);
@@ -33,17 +43,13 @@ public class CustomerService {
 		return cDao.findByEmail(email);
 	}
 	
-public Customer Verify(Customer cust) {
-	try {
-		Customer newcust = cDao.findByEmail(cust.getEmail());
-		if (newcust == null) {
-			cDao.save(cust);
-			newcust = cDao.findByEmail(cust.getEmail());
-		}
-		return newcust;
-		} catch (Exception e){
-			}
-	return null;
+public Customer verify(String email) {
+	
+	Customer cust = cDao.findByEmail(email);
+	if (cust == null) {
+		return null;
+	}	
+		return cust;
 	}
 
 }

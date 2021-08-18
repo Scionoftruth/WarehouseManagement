@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,22 +23,27 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="i_order")
+//@IdClass(OrderId.class)
 
 public class Order {
+
 
 	@Id
 	@Column(name="order_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderId;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="trans_id")
+	private Transaction transId;
+	
 	@Column(name="order_quantity", nullable=false)
 	private int orderQty;
-	
 	
 	@ManyToOne(cascade= CascadeType.ALL)
 	private Item itemId;
 
-	public Order(int orderQty, Item itemId) {
+	public Order(int orderId, int orderQty, Item itemId) {
 		super();
 		this.orderQty = orderQty;
 		this.itemId = itemId;

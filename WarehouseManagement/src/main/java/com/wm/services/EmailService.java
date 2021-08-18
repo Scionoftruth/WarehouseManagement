@@ -112,7 +112,7 @@ public void sendInvMail(int custId){
         message.setFrom(new InternetAddress(from));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
         message.setSubject("Here are your pending orders");
-    String mess = "Hello:\nYour current orders and status are: " + orde.getOrderId()+"\n";
+    String mess = "Hello:\nYour current orders and status are: " + order.getOrderId()+"\n";
 // list all transactions by customer ID, and the status if not resolved
 // return a list
 

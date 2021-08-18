@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -22,20 +24,20 @@ import com.wm.enums.StatusEnum;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(int i, int jname="transactions")
-@IdClass(TransactionId.class)
+@Table(name="transactions")
+//@IdClass(TransactionId.class)
 
 public class Transaction {
-
-
+	
+	@Id
+	@Column(name="trans_id")
+//	@ManyToOne(cascade=CascadeType.ALL)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int transId;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Employee empId;
-	
-	@Id
-	@ManyToOne(cascade=CascadeType.ALL)
-	private Order orderId;
-	
-	@Id
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Customer custId;
 	
@@ -43,8 +45,7 @@ public class Transaction {
 	@Column(name="status", nullable=false)
 	private StatusEnum status;
 
-	public Transaction(int custId, int orderId) {
-		this.orderId = orderId;
+	public Transaction(Customer custId) {
 		this.custId = custId;
 		this.status = StatusEnum.SUBMITTED;
 	}

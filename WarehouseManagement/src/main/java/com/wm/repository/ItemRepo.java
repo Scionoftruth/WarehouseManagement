@@ -9,7 +9,7 @@ import com.wm.models.Item;
 @Repository
 public interface ItemRepo extends JpaRepository<Item, Integer>{
 	public List<Item> findAll();
-	public Item findById(int id);
-	//public boolean update(Item item);
+	public Item findByItemId(int id);
+	
 	
 }

@@ -35,14 +35,16 @@ public class EmployeeController {
 	
 	//View all submitted/cancelled/complete  orders- in TransactionController
 	//View their accepted orders- in TransactionController
-	
-	//Cancel or complete orders
-	
-	
 	//View orders of a specific customer
+	 
+	
+	
 	//Check stock levels by item
 	//Add new stock, including new item 
 	//Mark an item as discontinued 
+	 
+	//Accept order - DONE
+	//Cancel or complete orders -DONE
 	
 	private EmployeeService eServ;
 
@@ -102,7 +104,7 @@ public class EmployeeController {
 	}
 	
 	//Cancel order
-	@PostMapping("/complete")
+	@PostMapping("/cancel")
 	public ResponseEntity<String> cancelOrder(@RequestBody LinkedHashMap<String, String> order){
 		
 		boolean isCancel = eServ.cancelOrder( Integer.parseInt(order.get("orderId")), Integer.parseInt(order.get("employeeId")) );

@@ -1,5 +1,7 @@
 package com.wm.services;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,8 @@ public class EmployeeService {
 	
 	public boolean registerEmployee(Employee em) {
 		try {
-			eDao.save(em);
+			Employee r = eDao.save(em);
+			int empId = r.getEmpId();
 			return true;
 		}catch(Exception ex) {
 			return false;
@@ -56,21 +59,19 @@ public class EmployeeService {
 		return eDao.getById(id);
 	}
 	
-	public boolean acceptOrder(int orderId, int employeeId){
-		//Get Current Employee ID from Session "Local Storage"
-		//id=1 is for testing only
-		employeeId = 1;
+	public boolean acceptOrder(int transactionId, int employeeId){
+		
 
 		StatusEnum completed = StatusEnum.valueOf("PENDING");
 		
-		Transaction t = tDao.findByOrderId(orderId);
-		
-		if (t == null){
+		Transaction t = tDao.findById(transactionId);
+		Employee e = eDao.findById(employeeId);
+		if (t == null || e == null){
 			return false;
 		} else {
 		
 		t.setStatus(completed);
-		t.setEmpId(employeeId);
+		t.setEmpId(e);
 		
 		tDao.save(t);
 		return true;
@@ -78,21 +79,20 @@ public class EmployeeService {
 	
 	}
 	
-	public boolean completeOrder(int orderId, int employeeId){
-		//Get Current Employee ID from Session "Local Storage"
-		//id=1 is for testing only
-		employeeId = 1;
+	public boolean completeOrder(int transactionId, int employeeId){
+		
 
 		StatusEnum completed = StatusEnum.valueOf("COMPLETED");
 		
-		Transaction t = tDao.findByOrderId(orderId);
+		Transaction t = tDao.findById(transactionId);
+		Employee e = eDao.findById(employeeId);
 		
 		if (t == null){
 			return false;
 		} else {
 		
 		t.setStatus(completed);
-		t.setEmpId(employeeId);
+		t.setEmpId(e);
 		
 		tDao.save(t);
 		return true;
@@ -100,26 +100,38 @@ public class EmployeeService {
 	
 	}
 	
-	public boolean cancelOrder(int orderId, int employeeId){
-		//Get Current Employee ID from Session "Local Storage"
-		//id=1 is for testing only
-		employeeId = 1;
-
+	public boolean cancelOrder(int transactionId, int employeeId){
+		
 		StatusEnum completed = StatusEnum.valueOf("CANCELED");
 		
-		Transaction t = tDao.findByOrderId(orderId);
+		Transaction t = tDao.findById(transactionId);
+		Employee e = eDao.findById(employeeId);
 		
 		if (t == null){
 			return false;
 		} else {
 		
 		t.setStatus(completed);
-		t.setEmpId(employeeId);
+		t.setEmpId(e);
 		
 		tDao.save(t);
 		return true;
 		}
 	
 	}
+	
+	
+	
+	
+	//Update customer information
+	
+	//View all submitted/cancelled/complete  orders- in TransactionController
+	//View their accepted orders- in TransactionController
+	//View orders of a specific customer
+
+	//Check stock levels by item
+	//Add new stock, including new item 
+	//Mark an item as discontinued 
+	 
 
 }

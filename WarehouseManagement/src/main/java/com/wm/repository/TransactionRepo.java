@@ -11,9 +11,9 @@ import com.wm.models.Transaction;
 public interface TransactionRepo extends JpaRepository<Transaction, Integer>{
 
 	public List<Transaction> findAll();
-	public Transaction findByOrderId(int orderId);
-	public Transaction findByCustId(int custId);
-	public Transaction findByEmpId(int empId);
+	public Transaction findById(int transactionId);
+//	public Transaction findByCustId(int custId);
+//	public Transaction findByEmpId(int empId);
 	
 	
 }

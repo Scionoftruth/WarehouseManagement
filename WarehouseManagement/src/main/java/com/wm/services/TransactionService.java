@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.wm.enums.StatusEnum;
 import com.wm.models.Customer;
 import com.wm.models.Transaction;
+import com.wm.models.Customer;
 import com.wm.repository.TransactionRepo;
+import com.wm.repository.CustomerRepo;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.NoArgsConstructor;
 public class TransactionService {
 	
 	private TransactionRepo tDao;
+	private CustomerRepo cDao;
 	
 	public boolean registerTransaction(Transaction t) {
 		// New entry into the database
@@ -47,8 +50,9 @@ public class TransactionService {
 	public List<Transaction> getUnresolvedByCustomer(int custId) {
 		List<Transaction> returnList = new ArrayList<Transaction>();
 		List<Transaction> totalList = new ArrayList<Transaction>();
+		Customer c = cDao.findByCustId(custId);
 		try {
-			totalList = tDao.findByCustId(custId);
+			totalList = tDao.findByCustId(c);
 
 			for (int i = 0; i < returnList.size(); i++) {
 				// if the transaction is unresolved, add to the list

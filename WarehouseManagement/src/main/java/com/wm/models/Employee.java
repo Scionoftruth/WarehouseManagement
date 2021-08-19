@@ -44,17 +44,17 @@ public class Employee {
 	@Column(name="emp_password", nullable=false)
 	private String password;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name="role", nullable=false)
-	private RoleEnum role;
+	//@Enumerated(EnumType.STRING)
+	//@Column(name="role", nullable=false)
+	//private RoleEnum role;
 
-	public Employee(String firstName, String lastName, String email, String password, RoleEnum role) {
+	public Employee(String firstName, String lastName, String email, String password/*, RoleEnum role*/) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.role = role;
+		//this.role = role;
 	}
 	
 	

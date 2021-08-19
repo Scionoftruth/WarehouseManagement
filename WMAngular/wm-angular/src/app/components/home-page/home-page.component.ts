@@ -35,6 +35,32 @@ export class HomePageComponent implements OnInit {
       (error)=>this.error=true);
   }
 
+  onSubmit2(): void{
+    console.log(this.email, this.password);
+    this.customerService.login(this.email,this.password)
+      .subscribe(data=>{this.customerService.customer = {
+        custId: data.custId,
+        email:this.email
+      }
+      this.error=false;
+      this.router.navigateByUrl('/employee-page');
+    },
+      (error)=>this.error=true);
+  }
+
+  onSubmit3(): void{
+    console.log(this.firstName,this.lastName,this.address,this.city,this.state,this.zipCode,this.email, this.password);
+    this.customerService.register(this.firstName,this.lastName,this.address,this.city,this.state,this.zipCode,this.email,this.password)
+      .subscribe(data=>{this.customerService.customer = {
+        custId: data.custId,
+        email:this.email
+      }
+      this.error=false;
+      this.router.navigateByUrl('/home-page');
+    },
+      (error)=>this.error=true);
+  }
+
   ngOnInit(): void {
   }
 

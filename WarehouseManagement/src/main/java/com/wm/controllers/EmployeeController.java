@@ -66,10 +66,10 @@ public class EmployeeController {
 		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"), role);
 		
 		if(eServ.registerEmployee(e)) {
-			return new ResponseEntity<>("User was registered", HttpStatus.CREATED);
+			return new ResponseEntity<>("Employee was registered", HttpStatus.CREATED);
 		}
 		else {
-			return new ResponseEntity<>("Username or email already registered to a user", HttpStatus.CONFLICT);
+			return new ResponseEntity<>("Email already registered to a user", HttpStatus.CONFLICT);
 		}
 	}
 	
@@ -84,7 +84,7 @@ public class EmployeeController {
 			return new ResponseEntity<>("User was Updated", HttpStatus.CREATED);
 		}
 		else {
-			return new ResponseEntity<>("email already registered to a user", HttpStatus.CONFLICT);
+			return new ResponseEntity<>("Email already registered to a user", HttpStatus.CONFLICT);
 		}
 	}
 	

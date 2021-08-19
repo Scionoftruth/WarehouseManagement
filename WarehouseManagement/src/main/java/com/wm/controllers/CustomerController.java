@@ -72,7 +72,19 @@ public class CustomerController {
 		}
 		return new ResponseEntity<Customer>(c, HttpStatus.OK);
 	}
- 
+	
+	@PostMapping("/register")
+	public ResponseEntity<String> registerCustomer(@RequestBody LinkedHashMap<String, String> customer){
+		System.out.println(customer);
+		
+		Customer c = new Customer(customer.get("firstName"),customer.get("lastName"),customer.get("address"),customer.get("city"),customer.get("state"),Integer.parseInt(customer.get("zipCode")),customer.get("email"),customer.get("password"));
+		if(cServ.registerCustomer(c)) {
+			return new ResponseEntity<>("Customer was registered", HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>("Email already registered to a user", HttpStatus.CONFLICT);
+		}
+	}
 
 	@GetMapping("/invoice")
 	public ResponseEntity<Customer> invoice(@RequestBody LinkedHashMap<String,String> custId) {

@@ -63,7 +63,7 @@ public class EmployeeController {
 		
 		RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
 		
-		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"), role);
+		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"));
 		
 		if(eServ.registerEmployee(e)) {
 			return new ResponseEntity<>("Employee was registered", HttpStatus.CREATED);
@@ -78,7 +78,7 @@ public class EmployeeController {
 		
 		RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
 		
-		Employee e = new Employee(Integer.parseInt(employee.get("id")), employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"), role);
+		Employee e = new Employee(Integer.parseInt(employee.get("id")), employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"));
 		
 		if(eServ.updateEmployee(e)) {
 			return new ResponseEntity<>("User was Updated", HttpStatus.CREATED);

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,25 +55,19 @@ public class CustomerController {
 	 //add the order to the order table
 	@PostMapping("/neworder")
 	public ResponseEntity<String> newOrder(@RequestBody LinkedHashMap<String, String> order){  
-//	    //This needs to be a list of item id alternated with quantity
-//		//List<Item> orderList = new ArrayList<Item>();
-//		Transaction trans = tServ.makeNew();
-//		System.out.println(trans);
-//		Order next = new Order();
-//		//for (int i = 0; i < orderList.size(); i++) {
-//			// add the item to the order
-//			next = new Order(trans.getTransId(), Integer.parseInt(order.get("quantity")), iServ.getItemById(Integer.parse));
-//			oServ.addOrder(next);	
-//		//}
-//		mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
-//		return new ResponseEntity<>("Order Created",HttpStatus.OK);
+
+	//needs to be a customer object
 		
-		Transaction trans = tServ.makeNew();
+		Customer custId = cServ.getCustomerById(Integer.parseInt(order.get("custId")));
+		
+		Transaction trans = tServ.makeNew(custId);
 		System.out.println(trans);
 		Order next = new Order();
 			next = new Order(trans.getTransId(), Integer.parseInt(order.get("quantity")), iServ.getItemById(Integer.parseInt(order.get("item"))));
-			System.out.println(next);
+//			System.out.println(next);
 			oServ.addOrder(next);	
+			
+
 		
 		//mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
 		return new ResponseEntity<>("Order Created",HttpStatus.OK);

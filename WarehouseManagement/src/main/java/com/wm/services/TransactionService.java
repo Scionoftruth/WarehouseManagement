@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wm.enums.StatusEnum;
+import com.wm.models.Customer;
 import com.wm.models.Transaction;
 import com.wm.models.Customer;
 import com.wm.repository.TransactionRepo;
@@ -67,12 +68,12 @@ public class TransactionService {
 	
 	}
 
-	public Transaction makeNew() {
+	public Transaction makeNew(Customer custId) {
 		//return a new transaction that doesn't have a matching number in database
-		Transaction trans = new Transaction();
-		if (tDao.findById(trans.getTransId()) != null){
-			makeNew();
-		}
+		Transaction trans = new Transaction(custId);
+//		if (tDao.findById(trans.getTransId()) != null){
+//			makeNew();
+//		}
 		return trans;
 
 	}

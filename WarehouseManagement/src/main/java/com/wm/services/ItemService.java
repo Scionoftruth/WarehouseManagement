@@ -68,7 +68,8 @@ public class ItemService {
 	}
 	
 	public void addItem(Item i) {
-		i.setItemPrice(Float.parseFloat(String.format("%12.2",(Float.toString(i.getItemPrice())))));
+
+		i.setItemPrice(Float.parseFloat(String.format("%12.2f",(Float.toString(i.getItemPrice())))));
 		iDao.save(i);
 	}
 	

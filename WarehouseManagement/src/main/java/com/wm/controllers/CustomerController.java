@@ -49,7 +49,7 @@ public class CustomerController {
 	 //record the customer ID on the transaction table and get the order number from transaction
 	 //set the transaction to submitted
 	 //add the order to the order table
-	@PostMapping("/customer/neworder")
+	@PostMapping("/neworder")
 	public ResponseEntity<String> newOrder(@RequestBody LinkedHashMap<String, String> order){  
 	    //This needs to be a list of item id alternated with quantity
 		List<Item> orderList = new ArrayList<Item>();
@@ -64,9 +64,9 @@ public class CustomerController {
 		return new ResponseEntity<>("Order Created",HttpStatus.OK);
 	}
  
-	@PostMapping("/customer/login")
+	@PostMapping("/login")
 	public ResponseEntity<Customer> loginCustomer(@RequestBody LinkedHashMap<String, String> customer) {	
-		Customer c = cServ.loginUser(customer.get("username"), customer.get("password"));
+		Customer c = cServ.loginUser(customer.get("email"), customer.get("password"));
 		if (c == null) {
 			return new ResponseEntity<Customer>(c, HttpStatus.FORBIDDEN);
 		}
@@ -74,7 +74,7 @@ public class CustomerController {
 	}
  
 
-	@GetMapping("/customer/invoice")
+	@GetMapping("/invoice")
 	public ResponseEntity<Customer> invoice(@RequestBody LinkedHashMap<String,String> custId) {
 		Customer c = cServ.getCustomerById(Integer.parseInt(custId.get("custId")));
 		if (c==null) {

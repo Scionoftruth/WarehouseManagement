@@ -12,7 +12,7 @@ export class CustomerService {
 
 
   customer:Customer = {
-    id: 0,
+    custId: 0,
     email: ''
   }
 

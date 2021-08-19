@@ -11,6 +11,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.wm.enums.StatusEnum;
 import com.wm.models.Customer;
 import com.wm.models.Item;
@@ -27,10 +30,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter
+@Service
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class EmailService {
 
 private String to;

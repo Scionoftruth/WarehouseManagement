@@ -26,7 +26,7 @@ export class HomePageComponent implements OnInit {
     console.log(this.email, this.password);
     this.customerService.login(this.email,this.password)
       .subscribe(data=>{this.customerService.customer = {
-        id: data.id,
+        custId: data.custId,
         email:this.email
       }
       this.error=false;

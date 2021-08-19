@@ -1,4 +1,4 @@
 export interface Customer{
-    id?:number,
+    custId?:number,
     email:string
 }

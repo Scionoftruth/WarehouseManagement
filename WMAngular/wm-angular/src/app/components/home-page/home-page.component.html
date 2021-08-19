@@ -5,27 +5,27 @@
 <input type="submit" value="Employee Login" />
 <input type="submit" value="Customer Login" />
 <div>
-    <form id="login" (ngSubmit)="onSubmit()">
+    <form id="loginc" (ngSubmit)="onSubmit()">
         <div class="input-div">
             <label for="email">Email: </label>
-            <input id="email" type="text" name="email" maxlength="50" required [(ngModel)]="email" />
+            <input id="emailc" type="text" name="email" maxlength="50" required />
         </div>
         <div class="input-div">
             <label for="password">Password: </label>
-            <input id="password" type="password" name="password" minlength="8" required [(ngModel)]="password" />
+            <input id="passwordc" type="password" name="password" minlength="8" required/>
         </div>
         <input type="submit" value="Customer Login" />
     </form>
 </div>
 <div>
-    <form id="login" (ngSubmit)="onSubmit2()">
+    <form id="logine" (ngSubmit)="onSubmit2()">
         <div class="input-div">
             <label for="email">Email: </label>
-            <input id="email" type="text" name="email" maxlength="50" required [(ngModel)]="email" />
+            <input id="emaile" type="text" name="email" maxlength="50" required  />
         </div>
         <div class="input-div">
             <label for="password">Password: </label>
-            <input id="password" type="password" name="password" minlength="8" required [(ngModel)]="password" />
+            <input id="passworde" type="password" name="password" minlength="8" required />
         </div>
         <input type="submit" value="Employee Login" />
     </form>
@@ -58,11 +58,11 @@
         </div>
         <div class="form-group">
             <label for="email">Email: </label>
-            <input type="email" name="email" maxlength="340" required id="email">
+            <input type="emailr" name="email" maxlength="340" required id="email">
         </div>
         <div class="form-group">
             <label for="password">Password: </label>
-            <input type="password" name="password" minlength="8" required id="password">
+            <input type="password" name="password" minlength="8" required id="passwordr">
         </div>
         <input type="submit" value="Register" />
     </form>

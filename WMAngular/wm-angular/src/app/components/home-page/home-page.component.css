@@ -1,4 +1,4 @@
-    <body> {
+    body {
     color: #F4F6F6;
     background-color: #17202A;
     font-family:sans-serif;
@@ -6,7 +6,7 @@
     padding: 4px, 3px;
     }
     
-    <div> {
+    div {
         background-color: #212128;
     }
     

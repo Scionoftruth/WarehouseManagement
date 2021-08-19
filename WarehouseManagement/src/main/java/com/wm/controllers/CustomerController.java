@@ -21,6 +21,7 @@ import com.wm.models.Transaction;
 import com.wm.repository.CustomerRepo;
 import com.wm.services.CustomerService;
 import com.wm.services.EmailService;
+import com.wm.services.ItemService;
 import com.wm.services.OrderService;
 import com.wm.services.TransactionService;
 
@@ -38,6 +39,7 @@ public class CustomerController {
 	 private OrderService oServ;
 	 private TransactionService tServ;
 	 private EmailService mailServ;
+	 private ItemService iServ;
 
 	 //make a new order
 	 //view order by email
@@ -51,17 +53,29 @@ public class CustomerController {
 	 //add the order to the order table
 	@PostMapping("/neworder")
 	public ResponseEntity<String> newOrder(@RequestBody LinkedHashMap<String, String> order){  
-	    //This needs to be a list of item id alternated with quantity
-		List<Item> orderList = new ArrayList<Item>();
+//	    //This needs to be a list of item id alternated with quantity
+//		//List<Item> orderList = new ArrayList<Item>();
+//		Transaction trans = tServ.makeNew();
+//		System.out.println(trans);
+//		Order next = new Order();
+//		//for (int i = 0; i < orderList.size(); i++) {
+//			// add the item to the order
+//			next = new Order(trans.getTransId(), Integer.parseInt(order.get("quantity")), iServ.getItemById(Integer.parse));
+//			oServ.addOrder(next);	
+//		//}
+//		mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
+//		return new ResponseEntity<>("Order Created",HttpStatus.OK);
+		
 		Transaction trans = tServ.makeNew();
+		System.out.println(trans);
 		Order next = new Order();
-		for (int i = 0; i < orderList.size(); i++) {
-			// add the item to the order
-			next = new Order(trans.getTransId(), orderList.get(i).getInvQuantity(), orderList.get(i));
+			next = new Order(trans.getTransId(), Integer.parseInt(order.get("quantity")), iServ.getItemById(Integer.parseInt(order.get("item"))));
+			System.out.println(next);
 			oServ.addOrder(next);	
-		}
-		mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
+		
+		//mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
 		return new ResponseEntity<>("Order Created",HttpStatus.OK);
+
 	}
  
 	@PostMapping("/login")

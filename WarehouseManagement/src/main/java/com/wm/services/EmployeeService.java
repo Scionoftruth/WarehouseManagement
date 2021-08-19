@@ -17,6 +17,9 @@ import com.wm.repository.OrderRepo;
 import com.wm.repository.TransactionRepo;
 import com.wm.services.ItemService;
 
+import com.wm.models.Customer;
+import com.wm.repository.CustomerRepo;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -29,6 +32,7 @@ public class EmployeeService {
 	private TransactionRepo tDao;
 	private ItemService iServ;
 	private OrderRepo oDao;
+	private CustomerRepo cDao;
 	
 	
 	public boolean registerEmployee(Employee em) {
@@ -106,7 +110,8 @@ public class EmployeeService {
 			return false;
 		} else {
 		//Get Order ID By transaction ID
-		List<Order> o = oDao.findByTransId(transactionId);
+		
+		List<Order> o = oDao.findByTransId(t);
 		int orderId = o.get(0).getOrderId();
 		
 		for (int i = 0 ; i < o.size(); i++){
@@ -135,7 +140,7 @@ public class EmployeeService {
 			return false;
 		} else {
 		//Get Order ID By transaction ID
-		List<Order> o = oDao.findByTransId(transactionId);
+		List<Order> o = oDao.findByTransId(t);
 		int orderId = o.get(0).getOrderId();
 		
 		for (int i = 0 ; i < o.size(); i++){
@@ -163,7 +168,7 @@ public class EmployeeService {
 			return false;
 		} else {
 		//Get Order ID By transaction ID
-		List<Order> o = oDao.findByTransId(transactionId);
+		List<Order> o = oDao.findByTransId(t);
 		int orderId = o.get(0).getOrderId();
 		
 		for (int i = 0 ; i < o.size(); i++){
@@ -179,10 +184,11 @@ public class EmployeeService {
 	}
 	
 	public List<Order> viewOrderByCustomer(int custId){
-		List<Transaction> t = tDao.findByCustId(custId);
+		Customer c = cDao.findByCustId(custId);
+		List<Transaction> t = tDao.findByCustId(c);
 		List<Order> order = new ArrayList<>();
 		for (int i =0; i<t.size();i++){
-			order.add(oDao.findBytransId( t.get(i).getTransId() ));
+			order.add(oDao.findBytransId( t.get(i) ));
 		}
 		return order;
 	}
@@ -191,7 +197,7 @@ public class EmployeeService {
 
 		List<Order> order = new ArrayList<>();
 		for (int i =0; i< t.size();i++){
-			order.add(oDao.findBytransId( t.get(i).getTransId() ));
+			order.add(oDao.findBytransId( t.get(i)));
 		}
 		return order;
 	}

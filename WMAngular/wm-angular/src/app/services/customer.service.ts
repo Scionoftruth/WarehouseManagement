@@ -23,11 +23,11 @@ export class CustomerService {
       }));
   }
 
-  /*register(firstName:string, lastName:string, address:string, city:string, state:string, zipCode:string, email:string, password:string):Observable<Customer>{
+  register(firstName:string, lastName:string, address:string, city:string, state:string, zipCode:string, email:string, password:string):Observable<Customer>{
     return this.http.post<Customer>("http://localhost:8080/customer/register", JSON.stringify({firstName,lastName,address,city,state,zipCode}))
       .pipe(catchError((e)=>{
         return throwError(e);
-      }));*/
-
-  constructor(private http: HttpClient) { }
+      }));
+    }
+   constructor(private http: HttpClient) { }
 }

@@ -9,7 +9,10 @@ import { HomeGuard } from './guards/home.guard';
 
 const routes: Routes = [
   {path:'home', component:HomePageComponent},
-  {path:'employee'}
+  {path:'employee', component:EmployeePageComponent, canActivate: [HomeGuard]},
+  {path:'customer', component:CustomerPageComponent, canActivate: [HomeGuard]},
+  {path:'profile', component:ProfileComponent},
+  {path:'', redirectTo:'/home',pathMatch:'full'}
 ];
 
 @NgModule({

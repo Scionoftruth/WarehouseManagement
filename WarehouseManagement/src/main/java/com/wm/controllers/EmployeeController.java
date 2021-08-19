@@ -61,9 +61,9 @@ public class EmployeeController {
 	public ResponseEntity<String> createEmployee(@RequestBody LinkedHashMap<String, String> employee){
 		System.out.println(employee);
 		
-		RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
+		//RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
 		
-		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"), role);
+		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"));
 		
 		if(eServ.registerEmployee(e)) {
 			return new ResponseEntity<>("Employee was registered", HttpStatus.CREATED);
@@ -78,7 +78,7 @@ public class EmployeeController {
 		
 		RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
 		
-		Employee e = new Employee(Integer.parseInt(employee.get("id")), employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"), role);
+		Employee e = new Employee(Integer.parseInt(employee.get("id")), employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"));
 		
 		if(eServ.updateEmployee(e)) {
 			return new ResponseEntity<>("User was Updated", HttpStatus.CREATED);
@@ -129,7 +129,7 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/{custId}")
+	@GetMapping("/customer/order/{custId}")
 	public ResponseEntity<List<Order>> viewOrderByCustomer(@PathVariable("custId")int custId){
 		
 		return new ResponseEntity<List<Order>>(eServ.viewOrderByCustomer(custId), HttpStatus.OK);
@@ -137,7 +137,7 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/{status}")
+	@GetMapping("/bystatus{status}")
 	public ResponseEntity<List<Order>> viewByStatus(@PathVariable("status")String status){
 		StatusEnum statusTo = StatusEnum.valueOf(status.toUpperCase());
 		List<Transaction> t = eServ.viewByStatus(statusTo);

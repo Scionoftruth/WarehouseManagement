@@ -46,7 +46,7 @@ public class Customer {
 	private String state;
 	
 	@Column(name="cust_zipcode", nullable=false)
-	private int zipCode;
+	private String zipCode;
 	
 	@Column(name="cust_email", nullable=false, unique=true)
 	private String email;
@@ -54,7 +54,7 @@ public class Customer {
 	@Column(name="cust_password")
 	private String password;
 
-	public Customer(String firstName, String lastName, String address, String city, String state, int zipCode,
+	public Customer(String firstName, String lastName, String address, String city, String state, String zipCode,
 			String email, String password) {
 		super();
 		this.firstName = firstName;

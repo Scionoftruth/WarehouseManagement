@@ -17,7 +17,7 @@ export class HomePageComponent implements OnInit {
   address: string='';
   city: string='';
   state: string='';
-  zipCode: number=0;
+  zipCode: string='';
 
 
   constructor(private customerService:CustomerService, private router:Router) { }

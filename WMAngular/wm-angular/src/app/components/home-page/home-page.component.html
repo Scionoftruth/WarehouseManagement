@@ -1,24 +1,59 @@
-<h1>Welcome to Warehouse Management</h1>
-<p>Login to Continue</p>
-<h1 *ngIf="error">Username of Password Incorrect</h1>
+<div class="jumbotron" id="welcome">
+    <h1 class="display-4">Welcome to the StockedMarket</h1>
+    <h3>Login or Register for a new employee account to get started</h3>
 
-<input type="submit" value="Employee Login" />
-<input type="submit" value="Customer Login" />
-<div>
-    <form id="loginc" (ngSubmit)="onSubmit()">
-        <div class="input-div">
-            <label for="email">Email: </label>
-            <input id="emailc" type="text" name="email" maxlength="50" required />
-        </div>
-        <div class="input-div">
-            <label for="password">Password: </label>
-            <input id="passwordc" type="password" name="password" minlength="8" required/>
-        </div>
-        <input type="submit" value="Customer Login" />
-    </form>
+
+    <!-- Customer Login Information Form -->
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="email"></span>
+        <input type="text" class="form-control" placeholder="E-Mail" aria-label="Email"
+            aria-describedby="basic-addon1" [(ngModel)]="email">
+        <br>
+        <br>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="password"></span>
+        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1" [(ngModel)]="password">
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-sm" (click)="login()">Login</button>
+    <button type="button" class="btn btn-danger btn-sm" (click)="register()">Register</button>
+    <div class="preview">
+        <p>{{email}}</p>
+        <br>
+        <p>{{password}}</p>
+
+    </div>
+
 </div>
-<div>
-    <form id="logine" (ngSubmit)="onSubmit2()">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Employee Login Information Form -->
+    <!-- <form id="logine" (ngSubmit)="onSubmit2()">
         <div class="input-div">
             <label for="email">Email: </label>
             <input id="emaile" type="text" name="email" maxlength="50" required  />
@@ -29,8 +64,12 @@
         </div>
         <input type="submit" value="Employee Login" />
     </form>
-</div>
-<div>
+</div> -->
+
+
+
+<!-- Check Register Componenet For These Elements -->
+<!-- <div>
     <form id="register" (ngSubmit)="onSubmit3()">
         <div class="form-group">
             <label for="firstName">First Name: </label>
@@ -66,4 +105,4 @@
         </div>
         <input type="submit" value="Register" />
     </form>
-</div>
+</div> -->

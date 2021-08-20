@@ -7,6 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerPageComponent implements OnInit {
 
+  firstName: String = ""
+  lastName: String = ""
+  password: String = ""
+  email: String = ""
+  streetNumber: String = ""
+  address1: String = ""
+  address2: String = ""
+  zipcode: String = ""
+  phoneNumber: String = ""
+  item1: String = ""
+  quantity1: String = ""
+  item2: String = ""
+  quantity2: String = ""
+  item3: String = ""
+  quantity3: String = ""
+
+  placeOrder():void{
+    alert("Order Submission Button Clicked")
+    //logic to place order on click of submission button
+  }
+
+
+
   constructor() { }
 
   ngOnInit(): void {

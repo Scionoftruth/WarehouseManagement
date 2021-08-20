@@ -65,7 +65,9 @@ public class CustomerController {
 		Order next = new Order();
 			next = new Order(trans.getTransId(), Integer.parseInt(order.get("quantity")), iServ.getItemById(Integer.parseInt(order.get("item"))));
 //			System.out.println(next);
+			next.setTransId(trans);
 			oServ.addOrder(next);	
+			tServ.registerTransaction(trans);
 			
 		
 		//mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));

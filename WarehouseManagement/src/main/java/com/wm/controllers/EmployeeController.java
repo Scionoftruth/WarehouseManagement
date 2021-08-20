@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -61,7 +61,7 @@ public class EmployeeController {
 	public ResponseEntity<String> createEmployee(@RequestBody LinkedHashMap<String, String> employee){
 		System.out.println(employee);
 		
-		RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
+		//RoleEnum role = RoleEnum.valueOf("EMPLOYEE");
 		
 		Employee e = new Employee(employee.get("firstName"), employee.get("lastName"), employee.get("email"), employee.get("password"));
 		
@@ -129,26 +129,34 @@ public class EmployeeController {
 		
 	}
 	
-	@GetMapping("/{custId}")
+	@GetMapping("/customer/order/{custId}")
 	public ResponseEntity<List<Order>> viewOrderByCustomer(@PathVariable("custId")int custId){
 		
-		return new ResponseEntity<List<Order>>(eServ.viewOrderByCustomer(custId), HttpStatus.OK);
+		return new ResponseEntity<>(eServ.viewOrderByCustomer(custId), HttpStatus.OK);
 		
 		
 	}
 	
-	@GetMapping("/{status}")
+	@GetMapping("/bystatus/{status}")
 	public ResponseEntity<List<Order>> viewByStatus(@PathVariable("status")String status){
+		List<Order> nullOrder = new ArrayList<>();
+		status = status.toLowerCase();
+		System.out.println(status);
+		if (status.equals("completed") | status.equals("pending") | status.equals("canceled") |status.equals("submitted")) {
 		StatusEnum statusTo = StatusEnum.valueOf(status.toUpperCase());
 		List<Transaction> t = eServ.viewByStatus(statusTo);
 		
 		
 		return new ResponseEntity<List<Order>>(eServ.viewOrderByTransaction(t), HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<List<Order>>(nullOrder, HttpStatus.NOT_FOUND);
+		}
 		
 		
 	}
 
-	//logout
+	
 	
 
 }

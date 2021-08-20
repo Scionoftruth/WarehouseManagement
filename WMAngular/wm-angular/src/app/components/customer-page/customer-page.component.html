@@ -1,6 +1,101 @@
-<p>customer-page works!</p>
+<link rel="stylesheet" href="customer-page.component.css"> <!--This is for css-->
+<div class="jumbotron" id="order-form">
+    <h1 class="display-4">Welcome to the StockedMarket Customer Ordering Form</h1>
+    <h3>Please enter your personal information and desired items for your order</h3>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="First Name" aria-label="firstName"
+            aria-describedby="basic-addon1" [(ngModel)]="firstName">
+        <br>
+        <br>
+        <input type="text" class="form-control" placeholder="Last Name" aria-label="lastName"
+            aria-describedby="basic-addon1" [(ngModel)]="lastName">
+        <br>
+        <br>
 
-<h3>Welcome customer<h3>
+        <input type="text" class="form-control" placeholder="Street Number" aria-label="streetnumber"
+            aria-describedby="basic-addon1" [(ngModel)]="streetNumber">
+        <br>
+        <input type="text" class="form-control" placeholder="Address Line 1" aria-label="address"
+            aria-describedby="basic-addon1" [(ngModel)]="address1">
+        <br>
 
-<!-- make an order -->
+        <input type="text" class="form-control" placeholder="Address Line 2 (Apt Unit #111)" aria-label="postalcode"
+            aria-describedby="basic-addon1" [(ngModel)]="address2">
+        <br>
+
+        <input type="text" class="form-control" placeholder="Zip-Code" aria-label="zipcode"
+            aria-describedby="basic-addon1" [(ngModel)]="zipcode">
+
+        <input type="text" class="form-control" placeholder="Phone: (773)-555-6789" aria-label="phone"
+            aria-describedby="basic-addon1" [(ngModel)]="phoneNumber">
+
+        <br>
+        <br>
+        <input type="text" class="form-control" placeholder="Item" aria-label="item" aria-describedby="basic-addon1"
+            [(ngModel)]="item1">
+        <br>
+        <input type="text" class="form-control" placeholder="Quantity" aria-label="quantity"
+            aria-describedby="basic-addon1" [(ngModel)]="quantity1">
+        <br>
+        <br>
+        <br>
+        <input type="text" class="form-control" placeholder="Item" aria-label="item" aria-describedby="basic-addon1"
+            [(ngModel)]="item2">
+        <br>
+
+        <input type="text" class="form-control" placeholder="Quantity" aria-label="quantity"
+            aria-describedby="basic-addon1" [(ngModel)]="quantity2">
+        <br>
+        <br>
+        <br>
+
+        <input type="text" class="form-control" placeholder="Item" aria-label="item" aria-describedby="basic-addon1"
+            [(ngModel)]="item3">
+        <br>
+        <input type="text" class="form-control" placeholder="Quantity" aria-label="quantity"
+            aria-describedby="basic-addon1" [(ngModel)]="quantity3">
+
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-sm" (click)="placeOrder()">Review and Submit</button>
+    <div class="input-group mb-3">
+    </div>
+    <br>
+    <!-- <button type="button" class="btn btn-primary btn-sm" (click)="login()">Login</button>
+    <button type="button" class="btn btn-danger btn-sm" (click)="register()">Register</button> -->
+
+
+    <div class="preview">
+        <p>{{firstName}}</p>
+        <br>
+        <p>{{lastName}}</p>
+        <br>
+        <p>{{email}}</p>
+        <br>
+        <p>{{streetNumber}}</p>
+        <br>
+        <p>{{address1}}</p>
+        <br>
+        <p>{{address2}}</p>
+        <br>
+        <p>{{zipcode}}</p>
+        <br>
+        <p>{{phoneNumber}}</p>
+        <br>
+        <p>{{item1}}</p>
+        <br>
+        <p>{{quantity1}}</p>
+        <br>
+        <p>{{item2}}</p>
+        <br>
+        <p>{{quantity2}}</p>
+        <br>
+        <p>{{item3}}</p>
+        <br>
+        <p>{{quantity3}}</p>
+        <br>
+
+    </div>
+
+</div>
 

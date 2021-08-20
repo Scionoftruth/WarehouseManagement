@@ -93,7 +93,8 @@ public void sendMail(int transNum, int custId){
         String mess = "Hello:\nThis is your invoice for order: " + transNum +"\n\n";
 
         List<Order> orderQuery = new ArrayList<Order>();
-        orderQuery = oDao.findByTransId(transNum);
+        Transaction t = tDao.findByTransId(transNum);
+        orderQuery = oDao.findByTransId(t);
 // check in the controller if the ID is valid
  //   if (orderQuery == null) {
  //       message.setText("Sorry, but we did not find an order matching the ID: " + transNum);

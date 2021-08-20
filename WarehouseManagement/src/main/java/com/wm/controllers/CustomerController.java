@@ -69,9 +69,11 @@ public class CustomerController {
 			oServ.addOrder(next);	
 			tServ.registerTransaction(trans);
 			
+
 		
 		//mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
 		return new ResponseEntity<>("Order Created",HttpStatus.OK);
+
 	}
  
 	@PostMapping("/login")
@@ -87,7 +89,7 @@ public class CustomerController {
 	public ResponseEntity<String> registerCustomer(@RequestBody LinkedHashMap<String, String> customer){
 		System.out.println(customer);
 		
-		Customer c = new Customer(customer.get("firstName"),customer.get("lastName"),customer.get("address"),customer.get("city"),customer.get("state"),Integer.parseInt(customer.get("zipCode")),customer.get("email"),customer.get("password"));
+		Customer c = new Customer(customer.get("firstName"),customer.get("lastName"),customer.get("address"),customer.get("city"),customer.get("state"),customer.get("zipCode"),customer.get("email"),customer.get("password"));
 		if(cServ.registerCustomer(c)) {
 			return new ResponseEntity<>("Customer was registered", HttpStatus.CREATED);
 		}

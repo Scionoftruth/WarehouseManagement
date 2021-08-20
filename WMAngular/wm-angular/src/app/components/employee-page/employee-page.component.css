@@ -1,0 +1,77 @@
+
+.html {
+    column-count: 3;
+}
+.cthree {
+    column-count: 3;
+    border-width: 3px;
+    border-style: groove;
+    border-color: slateblue;
+    text-align: center;
+    margin: 5%;
+}
+body {
+color: #F4F6F6;
+background-color: #222222;
+font-family: Verdana, Geneva, Tahoma, sans-serif, serif;
+text-align-last: center;
+font-size: 100%
+padding: 2%, 2%;
+margin-left: 5%;
+}
+footer {
+    display:inline-block;
+}
+
+a {
+    color: cyan;
+    text-decoration: none;
+}
+
+a:visited {
+    color: yellow;
+}
+
+nav {
+    background-color: rgba(192, 192, 192, 0.26);
+    display:flex;
+    size: 20%;
+    padding:2%;
+    flex:20%;
+}
+
+
+div {
+    margin: 1%;
+    text-align: center;
+    display:flex;
+    flex-grow: 2;
+    background-color: #212128;
+    border-radius: 5%;
+    border-style: double;
+    border-width: 4px;
+
+ul {
+    list-style: none;
+}
+
+.floatleft {
+    float:left;
+}
+
+.floatright {
+    float:right;
+}
+
+
+.register {
+    display:none;
+}
+
+.employee {
+    display:none;
+}
+
+.customer {
+    display:none
+}

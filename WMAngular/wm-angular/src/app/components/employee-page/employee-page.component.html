@@ -9,18 +9,53 @@ stock
   -->
 
 <h1>Employee page</h1>
-
+<div>
+<div class="itemlist">
+<table>
+<tr>
+<th>Item ID</th>
+<th>Item name</th>
+<th>Item price</th>
+</tr>
+<tr>
+<td>this</td>
+<td>is a</td>
+<td>test</td>
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+<div>
+<div>
 Find by status:
-<input type="radio" id="submitted" name="status" value="Submitted">
-<input type="radio" id="pending" name="status" value="Pending">
-<input type="radio" id="canceled" name="status" value="Canceled">
-<input type="radio" id="complete" name="status" value="Complete">
-<input type="submit" value="Search by Status">
+<ul>
+<label for="submitted">Submitted</label>&nbsp;
+<input type="radio" id="submitted" name="status" value="Submitted ">&nbsp;&nbsp;&nbsp;
+<label for="pending">Pending</label>&nbsp;
+<input type="radio" id="pending" name="status" value="Pending "><br>
+<label for="canceled">Cancel</label>&nbsp;
+<input type="radio" id="canceled" name="status" value="Canceled ">&nbsp;&nbsp;&nbsp;
+<label for="completed">Complete</label>&nbsp;
+<input type="radio" id="complete" name="status" value="Complete "><br>
+</ul>
+
+</div>
+<input type="submit" class="button" value="Search by Status"><br>
+</div>
+</div>
+<hr>
 
 Resolve order:
 
-<label for="orderId">Input the order id to change:
-<input type="text" id="orderid" maxlength="6">
-<input type="button" value="Accept">
-<input type="button" value="Cancel">
-<input type="button" value="Complete">
+<label for="orderId">Input the order id to change:</label>
+<input type="text" id="orderid" maxlength="6"><br>
+<input type="button" id="setPending" class="button" value="Accept">
+<input type="button" id="setCancel" class="button" value="Cancel">
+<input type="button" id="setComplete" class="button" value="Complete"><br>
+
+
+
+<div>
+   <app-order *ngFor="let order of (orders | async)" [order]="order"> </app-order>
+</div>

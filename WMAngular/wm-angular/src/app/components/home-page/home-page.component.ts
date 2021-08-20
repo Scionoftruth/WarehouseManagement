@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
+import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +18,7 @@ export class HomePageComponent implements OnInit {
   password: string='';
   error: boolean=false;
 
-  constructor(private customerService:CustomerService, private router:Router) { }
+  constructor(private customerService:CustomerService,private employeeService:EmployeeService, private router:Router) { }
   
   
   empFunction(){
@@ -38,7 +40,7 @@ export class HomePageComponent implements OnInit {
 
 //customer login
   login(): void{
-    console.log(this.email, this.password);
+    //console.log(this.email, this.password);
     this.customerService.login(this.email,this.password)
       .subscribe(data=>{this.customerService.customer = {
         custId: data.custId,
@@ -53,18 +55,18 @@ export class HomePageComponent implements OnInit {
   }
 
 //employee login
-  // onSubmit2(): void{
-  //   console.log(this.email, this.password);
-  //   this.customerService.login(this.email,this.password)
-  //     .subscribe(data=>{this.customerService.customer = {
-  //       custId: data.custId,
-  //       email:this.email
-  //     }
-  //     this.error=false;
-  //     this.router.navigateByUrl('/employee-page');
-  //   },
-  //     (error)=>this.error=true);
-  // }
+  employeeLogin(): void{
+    console.log(this.email, this.password);
+    this.employeeService.login(this.email,this.password)
+      .subscribe(data=>{this.employeeService.employee = {
+        empId: data.empId,
+        email:this.email
+      }
+      this.error=false;
+      this.router.navigateByUrl('/employee-page');
+    },
+      (error)=>this.error=true);
+  }
 
   ngOnInit(): void {
   }

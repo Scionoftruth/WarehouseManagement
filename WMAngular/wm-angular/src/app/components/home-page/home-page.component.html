@@ -1,12 +1,14 @@
 
 
 <link rel="stylesheet" href="home-page.component.css"> <!--This is for css-->
+
+
 <div>
-    <h1>Welcome to the Stonks Market</h1>
+    <h1>Welcome to the Cat Meme Market</h1>
     
-    <button (click)="empFunction()">Employee Login</button> 
+<!--    <button (click)="empFunction()">Employee Login</button> 
     <button (click)="cusFunction()">Customer Login</button> 
-    <button (click)="regFunction()">Register a new account</button>
+    <button (click)="regFunction()">Register a new account</button>-->
 
 </div>
     <!-- Customer Login Information Form -->
@@ -30,16 +32,31 @@
     
     </div>
     <br>
+    <div class="flex">
+    <h3>Employee</h3>
+    <div>
+        <span class="input-group-text" id="email"></span>
+        <input type="text" class="form-control" placeholder="E-Mail" aria-label="Email"
+            aria-describedby="basic-addon1" [(ngModel)]="email">
+        
+        
+  
+        <span class="input-group-text" id="password"></span>
+        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+            aria-describedby="basic-addon1" [(ngModel)]="password">
+            <div>
+            <br>
+               <button type="button" class="button" (click)="employeeLogin()">Login</button>
+    </div>
+    </div>
+    
+    </div>
+
+    
  
     <!--<button type="button" class="btn btn-danger btn-sm" (click)="register()">Register</button>-->
     
-    <div>
-        <p>{{email}}</p>
-        <br>
-        <p>{{password}}</p>
-
-    </div>
-
+ 
 
 
 

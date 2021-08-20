@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+color: #ffffff;
+background-color: black;
+background-image: linear-gradient(to top right, #0018, #01010a, #0018) ;
+font-family: Verdana, Geneva, Tahoma, sans-serif, serif;
+text-align: center;
+font-size: 100%;
+padding: 2%, 2%;
+margin-left: 5%;
+}
+p{
+background-image: url("https://cattamboo.com/wp-content/uploads/2013/01/cat-meme-derp.jpg");
+}

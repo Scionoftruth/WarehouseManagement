@@ -1,15 +1,5 @@
 
-.html {
-    column-count: 3;
-}
-.cthree {
-    column-count: 3;
-    border-width: 3px;
-    border-style: groove;
-    border-color: slateblue;
-    text-align: center;
-    margin: 5%;
-}
+
 body {
 color: #F4F6F6;
 background-color: #222222;
@@ -40,9 +30,13 @@ nav {
     flex:20%;
 }
 
+table, th, td {
+    border: 1px solid white;
+}
 
 div {
     margin: 1%;
+    font-size: 130%;
     text-align: center;
     display:flex;
     flex-grow: 2;
@@ -62,7 +56,11 @@ ul {
 .floatright {
     float:right;
 }
-
+.button {
+    color:black;
+    background-color: silver;
+    font-size:150%;
+}
 
 .register {
     display:none;

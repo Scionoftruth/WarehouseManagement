@@ -38,8 +38,8 @@ export class CustomerService {
       }));
     }
 
-  invoice(custId:String):Observable<Customer>{
-    return this.http.post<Customer>("http://localhost:8080/customer/invoice", JSON.stringify({custId}),{
+  invoice(custId:number):Observable<String>{
+    return this.http.post<String>(`http://localhost:8080/customer/invoice`, JSON.stringify({custId}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -50,7 +50,7 @@ export class CustomerService {
   }
 
   /*
-    
+
   */
   
   

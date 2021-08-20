@@ -1,4 +1,7 @@
+html {
 
+   background-color: #222; 
+}
 body {
 color: #ffffff;
 background-color: #222;
@@ -9,6 +12,11 @@ padding: 2%, 2%;
 margin-left: 5%;
 }
 
+.none {
+    display:block;
+    border-style:none;
+    background-color: green;
+}
 h1 {
     padding: .4%;
 }
@@ -61,8 +69,8 @@ ul {
     float:right;
 }
 .button {
-    color:silver;
-    background-color: red;
+    color:black;
+    background-color: silver;
     font-size:150%;
 }
 

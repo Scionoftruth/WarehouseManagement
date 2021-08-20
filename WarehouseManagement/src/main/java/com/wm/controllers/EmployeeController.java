@@ -25,6 +25,7 @@ import com.wm.services.ItemService;
 
 import com.wm.models.Employee;
 import com.wm.models.Order;
+import com.wm.models.ResponseOrder;
 import com.wm.models.Transaction;
 import com.wm.enums.RoleEnum;
 import com.wm.enums.StatusEnum;
@@ -132,27 +133,92 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/customer/order/{custId}")
-	public ResponseEntity<List<Order>> viewOrderByCustomer(@PathVariable("custId")int custId){
+	public ResponseEntity<List<ResponseOrder>> viewOrderByCustomer(@PathVariable("custId")int custId){
+		List<Order> order = eServ.viewOrderByCustomer(custId);
+		List<ResponseOrder> resOrder = new ArrayList<>();
 		
-		return new ResponseEntity<>(eServ.viewOrderByCustomer(custId), HttpStatus.OK);
+		for (int i = 0 ; i < order.size(); i++) {
+			if (order.get(i) != null) {
+				if (order.get(i).getTransId().getStatus().toString() == "SUBMITTED") {
+					String address = order.get(i).getTransId().getCustId().getAddress() + ", " + order.get(i).getTransId().getCustId().getCity() +", " + order.get(i).getTransId().getCustId().getState() +" "+ order.get(i).getTransId().getCustId().getZipCode();
+					String employee = "";
+					int qty = order.get(i).getOrderQty();
+					String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
+					
+					resOrder.add(new ResponseOrder(	qty, 
+							order.get(i).getItemId().getItemName(),
+							order.get(i).getItemId().getItemPrice(),
+							order.get(i).getItemId().getInvQuantity(), 
+							order.get(i).getTransId().getStatus().toString(),
+							customer, employee, address));
+				}
+				else {
+				String address = order.get(i).getTransId().getCustId().getAddress() + ", " + order.get(i).getTransId().getCustId().getCity() +", " + order.get(i).getTransId().getCustId().getState() +" "+ order.get(i).getTransId().getCustId().getZipCode();
+				String employee = order.get(i).getTransId().getEmpId().getFirstName() + " "+ order.get(i).getTransId().getEmpId().getLastName();
+				int qty = order.get(i).getOrderQty();
+				String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
+				
+				resOrder.add(new ResponseOrder(	qty, 
+						order.get(i).getItemId().getItemName(),
+						order.get(i).getItemId().getItemPrice(),
+						order.get(i).getItemId().getInvQuantity(), 
+						order.get(i).getTransId().getStatus().toString(),
+						customer, employee, address));
+				}
+			}
+		}
+		return new ResponseEntity<>(resOrder, HttpStatus.OK);
 		
 		
 	}
 	
 	@GetMapping("/bystatus/{status}")
-	public ResponseEntity<List<Order>> viewByStatus(@PathVariable("status")String status){
-		List<Order> nullOrder = new ArrayList<>();
+	public ResponseEntity<List<ResponseOrder>> viewByStatus(@PathVariable("status")String status){
+		List<ResponseOrder> nullOrder = new ArrayList<>();
 		status = status.toLowerCase();
 		System.out.println(status);
 		if (status.equals("completed") | status.equals("pending") | status.equals("canceled") |status.equals("submitted")) {
 		StatusEnum statusTo = StatusEnum.valueOf(status.toUpperCase());
 		List<Transaction> t = eServ.viewByStatus(statusTo);
 		
+		List<Order> order = eServ.viewOrderByTransaction(t);
+		List<ResponseOrder> resOrder = new ArrayList<>();
 		
-		return new ResponseEntity<List<Order>>(eServ.viewOrderByTransaction(t), HttpStatus.OK);
+		for (int i = 0 ; i < order.size(); i++) {
+			if (order.get(i) != null) {
+				if (order.get(i).getTransId().getStatus().toString() == "SUBMITTED") {
+					String address = order.get(i).getTransId().getCustId().getAddress() + ", " + order.get(i).getTransId().getCustId().getCity() +", " + order.get(i).getTransId().getCustId().getState() +" "+ order.get(i).getTransId().getCustId().getZipCode();
+					String employee = "";
+					int qty = order.get(i).getOrderQty();
+					String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
+					
+					resOrder.add(new ResponseOrder(	qty, 
+							order.get(i).getItemId().getItemName(),
+							order.get(i).getItemId().getItemPrice(),
+							order.get(i).getItemId().getInvQuantity(), 
+							order.get(i).getTransId().getStatus().toString(),
+							customer, employee, address));
+				}
+				else {
+				String address = order.get(i).getTransId().getCustId().getAddress() + ", " + order.get(i).getTransId().getCustId().getCity() +", " + order.get(i).getTransId().getCustId().getState() +" "+ order.get(i).getTransId().getCustId().getZipCode();
+				String employee = order.get(i).getTransId().getEmpId().getFirstName() + " "+ order.get(i).getTransId().getEmpId().getLastName();
+				int qty = order.get(i).getOrderQty();
+				String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
+				
+				resOrder.add(new ResponseOrder(	qty, 
+						order.get(i).getItemId().getItemName(),
+						order.get(i).getItemId().getItemPrice(),
+						order.get(i).getItemId().getInvQuantity(), 
+						order.get(i).getTransId().getStatus().toString(),
+						customer, employee, address));
+				}
+			}
+		}
+		
+		return new ResponseEntity<>(resOrder, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<List<Order>>(nullOrder, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(nullOrder, HttpStatus.NOT_FOUND);
 		}
 		
 		

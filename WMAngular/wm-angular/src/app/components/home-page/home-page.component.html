@@ -1,10 +1,11 @@
 <h1>Welcome to Warehouse Management</h1>
 <p>Login to Continue</p>
 <h1 *ngIf="error">Username of Password Incorrect</h1>
-
-<input type="submit" value="Employee Login" />
-<input type="submit" value="Customer Login" />
-<div>
+<link rel="stylesheet" href="home-page.component.css">
+<button (click)="empFunction()">Employee Login</button> 
+<button (click)="cusFunction()">Customer Login</button> 
+<button (click)="regFunction()">Register a new account</button>
+<div *ngIf="customerdiv">
     <form id="login" (ngSubmit)="onSubmit()">
         <div class="input-div">
             <label for="email">Email: </label>
@@ -17,7 +18,7 @@
         <input type="submit" value="Customer Login" />
     </form>
 </div>
-<div>
+<div *ngIf="employeediv">
     <form id="login" (ngSubmit)="onSubmit2()">
         <div class="input-div">
             <label for="email">Email: </label>
@@ -30,7 +31,7 @@
         <input type="submit" value="Employee Login" />
     </form>
 </div>
-<div>
+<div *ngIf="registerdiv">
     <form id="register" (ngSubmit)="onSubmit3()">
         <div class="form-group">
             <label for="firstName">First Name: </label>

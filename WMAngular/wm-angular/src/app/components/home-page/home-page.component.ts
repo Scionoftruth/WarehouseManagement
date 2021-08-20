@@ -65,3 +65,24 @@ export class HomePageComponent implements OnInit {
   }
 
 }
+employeediv:boolean=false;
+customerdiv:boolean=false;
+registerdiv:boolean=false;
+
+
+empFunction(){
+  this.employeediv=true;
+  this.customerdiv=false;
+  this.registerdiv=false
+}
+
+cusFunction(){
+  this.employeediv=false;
+  this.customerdiv=true;
+  this.registerdiv=false
+}
+regFunction(){
+  this.employeediv=false;
+  this.customerdiv=false;
+  this.registerdiv=true
+}

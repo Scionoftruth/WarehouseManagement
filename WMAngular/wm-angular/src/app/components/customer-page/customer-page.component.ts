@@ -36,7 +36,7 @@ export class CustomerPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log();
+    
   }
 
 }

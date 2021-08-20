@@ -1,39 +1,46 @@
 
 
 <link rel="stylesheet" href="home-page.component.css"> <!--This is for css-->
-<div class="jumbotron" id="welcome">
-    <h1 class="display-4">Welcome to the StockedMarket</h1>
-    <h3>Login or Register for a new employee account to get started</h3>
+<div>
+    <h1>Welcome to the Stonks Market</h1>
+    
     <button (click)="empFunction()">Employee Login</button> 
     <button (click)="cusFunction()">Customer Login</button> 
     <button (click)="regFunction()">Register a new account</button>
 
-
+</div>
     <!-- Customer Login Information Form -->
-
-    <div class="input-group mb-3">
+<div class="flex">
+<h3>Login or Register for a new account to get started</h3>
+    <div>
         <span class="input-group-text" id="email"></span>
         <input type="text" class="form-control" placeholder="E-Mail" aria-label="Email"
             aria-describedby="basic-addon1" [(ngModel)]="email">
-        <br>
-        <br>
-    </div>
-    <div class="input-group mb-3">
+        
+        
+  
         <span class="input-group-text" id="password"></span>
         <input type="password" class="form-control" placeholder="Password" aria-label="Password"
             aria-describedby="basic-addon1" [(ngModel)]="password">
+            <div>
+            <br>
+               <button type="button" class="button" (click)="login()">Login</button>
+    </div>
+    </div>
+    
     </div>
     <br>
-    <button type="button" class="btn btn-primary btn-sm" (click)="login()">Login</button>
+ 
     <!--<button type="button" class="btn btn-danger btn-sm" (click)="register()">Register</button>-->
-    <div class="preview">
+    
+    <div>
         <p>{{email}}</p>
         <br>
         <p>{{password}}</p>
 
     </div>
 
-</div>
+
 
 
 

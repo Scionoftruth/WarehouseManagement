@@ -1,26 +1,17 @@
 
-.html {
-    column-count: 3;
-}
-.cthree {
-    column-count: 3;
-    border-width: 3px;
-    border-style: groove;
-    border-color: slateblue;
-    text-align: center;
-    margin: 5%;
-}
-
 body {
-color: #F4F6F6;
-background-color: #222222;
-font-family: Verdana, Geneva, Tahoma, sans-serif, serif;
-text-align-last: center;
+color: #ffffff;
+background-color: #222;
+font-family:  Verdana, Geneva, Tahoma, sans-serif, serif;
+text-align: center;
 font-size: 100%;
 padding: 2%, 2%;
 margin-left: 5%;
 }
 
+h1 {
+    padding: .4%;
+}
 footer {
     display:inline-block;
 }
@@ -44,17 +35,22 @@ nav {
 
 
 div {
-    margin: 1%;
+    margin: 4%;
     text-align: center;
-    display:flex;
-    flex-grow: 2;
-    background-color: #212128;
+    display:block;
+    color: silver;
+    background-color: #222;
     border-radius: 5%;
-    border-style: double;
+    border-style: none;
     border-width: 4px;
 }
 ul {
     list-style: none;
+}
+.flex{
+    display:"flex";
+    column-count:3;
+    border-style:double;
 }
 
 .floatleft {
@@ -64,7 +60,11 @@ ul {
 .floatright {
     float:right;
 }
-
+.button {
+    color:silver;
+    background-color: red;
+    font-size:150%;
+}
 
 .register {
     display:none;

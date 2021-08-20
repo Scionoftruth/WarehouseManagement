@@ -46,6 +46,8 @@ export class HomePageComponent implements OnInit {
       }
       this.error=false;
       this.router.navigateByUrl('/customer-page');
+      //console.log(data);
+      //console.log(data.custId);
     },
       (error)=>this.error=true); 
   }

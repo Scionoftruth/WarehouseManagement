@@ -101,13 +101,13 @@ public class CustomerController {
 	}
 
 	@GetMapping("/invoice")
-	public ResponseEntity<Customer> invoice(@RequestBody LinkedHashMap<String,String> custId) {
+	public ResponseEntity<String> invoice(@RequestBody LinkedHashMap<String,String> custId) {
 		Customer c = cServ.getCustomerById(Integer.parseInt(custId.get("custId")));
 		if (c==null) {
-			return new ResponseEntity<Customer>(c, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("Customer Was Not Found", HttpStatus.NOT_FOUND);
 		}
 		mailServ.sendInvMail(Integer.getInteger(custId.get("custId")));
-		return new ResponseEntity<Customer>(c, HttpStatus.OK);
+		return new ResponseEntity<String>("A Invoice Email Has been Sent", HttpStatus.OK);
 	}
  }
 

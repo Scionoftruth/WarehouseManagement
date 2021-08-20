@@ -27,8 +27,9 @@ export class HomePageComponent implements OnInit {
       this.error=false;
       this.router.navigateByUrl('/customer-page');
     },
-      (error)=>this.error=true);
+      (error)=>this.error=true); 
   }
+
 //employee login
   // onSubmit2(): void{
   //   console.log(this.email, this.password);

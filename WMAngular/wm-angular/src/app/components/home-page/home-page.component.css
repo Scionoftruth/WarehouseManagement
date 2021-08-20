@@ -2,7 +2,6 @@
 .html {
     column-count: 3;
 }
-
 .cthree {
     column-count: 3;
     border-width: 3px;
@@ -17,7 +16,8 @@ color: #F4F6F6;
 background-color: #222222;
 font-family: Verdana, Geneva, Tahoma, sans-serif, serif;
 text-align-last: center;
-font-size: 100%;
+
+font-size: 100%
 padding: 2%, 2%;
 margin-left: 5%;
 }
@@ -54,7 +54,6 @@ div {
     border-style: double;
     border-width: 4px;
 }
-
 ul {
     list-style: none;
 }

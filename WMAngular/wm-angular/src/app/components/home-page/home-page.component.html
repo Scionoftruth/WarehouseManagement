@@ -1,8 +1,12 @@
 
+
 <link rel="stylesheet" href="home-page.component.css"> <!--This is for css-->
 <div class="jumbotron" id="welcome">
     <h1 class="display-4">Welcome to the StockedMarket</h1>
     <h3>Login or Register for a new employee account to get started</h3>
+    <button (click)="empFunction()">Employee Login</button> 
+    <button (click)="cusFunction()">Customer Login</button> 
+    <button (click)="regFunction()">Register a new account</button>
 
 
     <!-- Customer Login Information Form -->
@@ -56,6 +60,7 @@
 
 <!-- Employee Login Information Form -->
     <!-- <form id="logine" (ngSubmit)="onSubmit2()">
+
         <div class="input-div">
             <label for="email">Email: </label>
             <input id="emaile" type="text" name="email" maxlength="50" required  />
@@ -66,12 +71,10 @@
         </div>
         <input type="submit" value="Employee Login" />
     </form>
-</div> -->
 
+</div>
+<div *ngIf="registerdiv">
 
-
-<!-- Check Register Componenet For These Elements -->
-<!-- <div>
     <form id="register" (ngSubmit)="onSubmit3()">
         <div class="form-group">
             <label for="firstName">First Name: </label>

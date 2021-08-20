@@ -10,6 +10,7 @@ import { CustomerPageComponent } from './components/customer-page/customer-page.
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EmployeePageComponent } from './components/employee-page/employee-page.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EmployeePageComponent } from './components/employee-page/employee-page.
     CustomerPageComponent,
     ProfileComponent,
     NavbarComponent,
-    EmployeePageComponent
+    EmployeePageComponent, 
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

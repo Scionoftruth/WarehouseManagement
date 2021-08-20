@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Customer } from 'src/app/Customer';
 
 @Component({
   selector: 'app-customer-page',
@@ -23,6 +24,8 @@ export class CustomerPageComponent implements OnInit {
   item3: String = ""
   quantity3: String = ""
 
+  constructor() { }
+
   placeOrder():void{
     alert("Order Submission Button Clicked")
     //logic to place order on click of submission button
@@ -30,9 +33,10 @@ export class CustomerPageComponent implements OnInit {
 
 
 
-  constructor() { }
+
 
   ngOnInit(): void {
+    console.log();
   }
 
 }

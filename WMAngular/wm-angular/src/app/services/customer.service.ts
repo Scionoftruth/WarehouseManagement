@@ -17,7 +17,11 @@ export class CustomerService {
   }
 
   login(email:string, password:string):Observable<Customer>{
-    return this.http.post<Customer>("http://localhost:8080/customer/login", JSON.stringify({email, password}))
+    return this.http.post<Customer>("http://localhost:8080/customer/login", JSON.stringify({email, password}),{
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
       .pipe(catchError((e)=>{
         return throwError(e);
       }));
@@ -29,5 +33,7 @@ export class CustomerService {
         return throwError(e);
       }));
     }
+
+  
    constructor(private http: HttpClient) { }
 }

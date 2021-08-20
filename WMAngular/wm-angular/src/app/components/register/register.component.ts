@@ -9,14 +9,17 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class RegisterComponent implements OnInit {
 
-  firstName: String = ""
-  lastName: String = ""
-  password: String = ""
-  email: String = ""
-  address: String = ""
-  city: String = ""
-  state: String = ""
-  zipcode: String = ""
+  firstName: string = ""
+  lastName: string = ""
+  password: string = ""
+  email: string = ""
+  address: string = ""
+  city: string = ""
+  state: string = ""
+  zipcode: string = ""
+  error: boolean=false;
+
+  constructor(private customerService:CustomerService, private router:Router) {}
 
   createReg():void{
     alert("New Registration Submission Clicked")
@@ -34,7 +37,6 @@ export class RegisterComponent implements OnInit {
   
   }
 
-  constructor() {}
 
   ngOnInit(): void {
   }

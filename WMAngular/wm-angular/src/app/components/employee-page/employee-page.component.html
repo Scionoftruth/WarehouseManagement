@@ -1,3 +1,26 @@
 <link rel="stylesheet" href="employee-page.component.css"> <!--This is for css-->
 
-<p>employee-page works!</p>
+
+<!--  View order by id
+view order by status
+accept order
+complete order
+stock
+  -->
+
+<h1>Employee page</h1>
+
+Find by status:
+<input type="radio" id="submitted" name="status" value="Submitted">
+<input type="radio" id="pending" name="status" value="Pending">
+<input type="radio" id="canceled" name="status" value="Canceled">
+<input type="radio" id="complete" name="status" value="Complete">
+<input type="submit" value="Search by Status">
+
+Resolve order:
+
+<label for="orderId">Input the order id to change:
+<input type="text" id="orderid" maxlength="6">
+<input type="button" value="Accept">
+<input type="button" value="Cancel">
+<input type="button" value="Complete">

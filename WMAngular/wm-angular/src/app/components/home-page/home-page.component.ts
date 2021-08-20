@@ -9,20 +9,40 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 
 export class HomePageComponent implements OnInit {
-
+  employeediv:boolean=false;
+  customerdiv:boolean=false;
+  registerdiv:boolean=false;
   email: string='';
   password: string='';
   error: boolean=false;
 
-
   constructor(private customerService:CustomerService, private router:Router) { }
+  
+  
+  empFunction(){
+    this.employeediv=true;
+    this.customerdiv=false;
+    this.registerdiv=false
+  }
+  
+  cusFunction(){
+    this.employeediv=false;
+    this.customerdiv=true;
+    this.registerdiv=false
+  }
+  regFunction(){
+    this.employeediv=false;
+    this.customerdiv=false;
+    this.registerdiv=true
+  }
+
 //customer login
   login(): void{
     console.log(this.email, this.password);
     this.customerService.login(this.email,this.password)
       .subscribe(data=>{this.customerService.customer = {
         custId: data.custId,
-        email:this.email
+        email: this.email
       }
       this.error=false;
       this.router.navigateByUrl('/customer-page');
@@ -48,24 +68,4 @@ export class HomePageComponent implements OnInit {
   }
 
 }
-employeediv:boolean=false;
-customerdiv:boolean=false;
-registerdiv:boolean=false;
 
-
-empFunction(){
-  this.employeediv=true;
-  this.customerdiv=false;
-  this.registerdiv=false
-}
-
-cusFunction(){
-  this.employeediv=false;
-  this.customerdiv=true;
-  this.registerdiv=false
-}
-regFunction(){
-  this.employeediv=false;
-  this.customerdiv=false;
-  this.registerdiv=true
-}

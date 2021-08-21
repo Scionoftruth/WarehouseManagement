@@ -1,50 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/Customer';
-import { CustomerService } from 'src/app/services/customer.service';
-import { OrderService } from 'src/app/services/order.service';
+import { Observable } from 'rxjs';
+import { CustomerService } from '../../services/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-page',
   templateUrl: './customer-page.component.html',
   styleUrls: ['./customer-page.component.css']
 })
-export class CustomerPageComponent implements OnInit {
 
-  firstName: string = ""
-  lastName: string = ""
+export class CustomerPageComponent implements OnInit {
   password: string = ""
   email: string = ""
-  //streetNumber: string = ""
-  address: string = ""
-  //address2: string = ""
-  city: string=""
-  zipCode: string = ""
-  //phoneNumber: string = ""
-  itemId: number = 0
-  itemQuantity: number = 0
-  //item2: string = ""
-  //quantity2: string = ""
-  //item3: string = ""
-  //quantity3: string = ""
-  custId:number=this.customerService.customer.custId
+  custId: number = 0;
 
-  constructor(private customerService:CustomerService,private orderService:OrderService) { }
+  createOrder():void{
+    alert("Order Submission Button Clicked")
+    console.log(this.custId)
+    //pass the user thats logged in ?
+    this.customerService.login(this.email, this.password)
+      .subscribe(data=>{this.customerService.customer = {
+        email: data.email,
+        custId: data.custId,
+      }
+      this.error=false;
+      this.router.navigateByUrl('/customer-page');
+    },
+      (error)=>this.error=true); 
 
-  placeOrder():void{
-    this.orderService.createOrder(this.custId,this.itemId,this.itemQuantity);
   }
-
-  invoice():void{
-    this.customerService.invoice(this.custId);
-  }
-
-  
-
-
-
-
   ngOnInit(): void {
-    
+    this.customerService.invoice(this.custId);
+
   }
+
+  constructor(private customerService:CustomerService, private router:Router) {}
+
+   
+
 
 }

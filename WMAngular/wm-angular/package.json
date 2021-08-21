@@ -23,13 +23,8 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-<<<<<<< Updated upstream
     "@angular-devkit/build-angular": "~12.1.4",
     "@angular/cli": "^12.2.2",
-=======
-    "@angular-devkit/build-angular": "^12.1.4",
-    "@angular/cli": "~12.1.4",
->>>>>>> Stashed changes
     "@angular/compiler-cli": "~12.1.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",

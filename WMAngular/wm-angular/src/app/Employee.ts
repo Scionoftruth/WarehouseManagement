@@ -1,4 +1,4 @@
 export interface Employee{
-    empId?:number,
+    empId:number,
     email:string
 }

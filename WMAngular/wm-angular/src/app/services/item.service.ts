@@ -15,12 +15,13 @@ export class ItemService {
   itemQuantity:number=0;
   items: Item[] = [];
   subject: Subject<Item[]> = new Subject<Item[]>();
+  invQuantity:number=0;
 
 
   constructor(private http:HttpClient) { }
 
   getAllItems(){
-      this.http.get<Item[]>("http://localhost:8080/stock")
+      this.http.get<Item[]>("http://localhost:8080/item/stock")
       .pipe(
         catchError((e)=>{
           return throwError(e);
@@ -34,7 +35,7 @@ export class ItemService {
   }
 
   getItemById(itemId:number):Observable<Item>{
-      return this.http.get<Item>(`http://localhost:8080/stock/${itemId}`)
+      return this.http.get<Item>(`http://localhost:8080/item/stock/${itemId}`)
       .pipe(
         catchError((e)=>{
           return throwError(e);
@@ -44,7 +45,7 @@ export class ItemService {
   
 
   addItem(itemId:number,itemName:string,itemPrice:number,itemQuantity:number):Observable<String>{
-      return this.http.post<String>("http://localhost:8080/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
+      return this.http.post<String>("http://localhost:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
         headers:{
           "Content-Type":"application/json"
         }

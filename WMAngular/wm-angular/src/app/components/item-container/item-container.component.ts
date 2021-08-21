@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from 'src/app/Item';
 import { ItemService } from 'src/app/services/item.service';
@@ -10,13 +10,17 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class ItemContainerComponent implements OnInit {
 
-  items: Observable<Item[]> = new Observable<Item[]>();
+  @Input() item:Item = {
+    itemId: 0,
+    itemName: '',
+    itemPrice: 0,
+    invQuantity: 0
+  }
 
-  constructor(private itemService:ItemService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.itemService.getAllItems();
-    this.items = this.itemService.subject;
+    
   }
 
 }

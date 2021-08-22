@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="employee-page.component.css"> <!--This is for css-->
 
 
-<!--  View order by id
+<!--  View order by customer id
 view order by status
 accept order
 complete order
@@ -9,24 +9,47 @@ stock
   -->
 
 <h1>Employee page</h1>
-<div>
-<div class="itemlist">
+<br>
+<div id="itemlist">
 <table>
-<tr>
-<th>Item ID</th>
-<th>Item name</th>
-<th>Item price</th>
-</tr>
-<tr>
-<td>this</td>
-<td>is a</td>
-<td>test</td>
-</tr>
-<tr>
-</tr>
+  <tr>
+  <th *ngFor = "let column of orderHeaders">
+    {{column}}
+  <th>
+  </tr>
+
+<tr *ngFor="let order of (orders | async)">
+  <td>
+      {{order.itemName}}
+  </td>
+  <td>
+      {{order.orderQty}}
+  </td>
+  <td>
+      {{order.itemPrice}}
+  </td>
+  <td>
+      {{order.invQuantity}}
+  </td>
+  <td>
+      {{order.status}}
+  </td>
+  <td>
+      {{order.customerName}}
+  </td>
+  <td>
+      {{order.employeeName}}
+  </td>
+  <td>
+      {{order.customerAddress}}
+  </td>
+  </tr>
 </table>
+
+  <app-item-container *ngFor="let item of (items | async)" [item]="item"></app-item-container><br>
+
+
 </div>
-<div>
 <div>
 Find by status:
 <ul>
@@ -42,8 +65,8 @@ Find by status:
 
 </div>
 <input type="submit" class="button" value="Search by Status"><br>
-</div>
-</div>
+
+
 <hr>
 
 Resolve order:
@@ -56,10 +79,11 @@ Resolve order:
 
 
 
-<div>
+<!--<div>
    <app-order *ngFor="let order of (orders | async)" [order]="order"> </app-order>
+   
 </div>
 
 <div>
   <app-item-container *ngFor="let item of (items | async)" [item]="item"></app-item-container>
-</div>
+</div>-->

@@ -11,9 +11,21 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./employee-page.component.css']
 })
 export class EmployeePageComponent implements OnInit {
-  
-  
+
+  @Input() order: Order = {
+    orderQty: 0,
+    itemName: '',
+    itemPrice: 0,
+    invQuantity: 0,
+    status: '',
+    customerName: '',
+    employeeName: '',
+    customerAddress: ''
+  }
+  orderHeaders= ["Item Name","Order Quantity","Price","Quantity Inventory","Status","Customer Name","Employee Name","Address"]
+
   orders: Observable<Order[]> = new Observable<Order[]>();
+
   items: Observable<Item[]> = new Observable<Item[]>();
 
   constructor(private employeeService:EmployeeService,private itemService:ItemService) { }

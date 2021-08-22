@@ -44,6 +44,8 @@ export class CustomerPageComponent implements OnInit {
     this.customerService.invoice(this.custId);
   }
 
+  //register?
+  //
 
 
   ngOnInit(): void {

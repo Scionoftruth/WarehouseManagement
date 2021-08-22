@@ -27,7 +27,7 @@ export class EmployeePageComponent implements OnInit {
   // view order by status
   // accept order
   // complete order
-  // check stock
+  // check stock - Already Done
   
   viewCustomerOrder(): void{
     this.isShow = !this.isShow;
@@ -44,6 +44,7 @@ export class EmployeePageComponent implements OnInit {
     console.log(this.res);
   }
   ngOnInit(): void {
+    //We might want to look into local storage because if we refresh the page, we lose Observable
     if (this.employeeService.employee.empId == 0) {
       this.router.navigateByUrl('/home');
     }

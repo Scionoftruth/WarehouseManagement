@@ -1,32 +1,40 @@
 <link rel="stylesheet" href="employee-page.component.css"> <!--This is for css-->
 
 
-<!--  View order by id
+<!--  View order by customer id
 view order by status
 accept order
 complete order
-stock
+check stock
   -->
 
 <h1>Employee page</h1>
+<br>
+
+<h2>View Customer Order</h2>
+
 <div>
-<div class="itemlist">
-<table>
-<tr>
-<th>Item ID</th>
-<th>Item name</th>
-<th>Item price</th>
-</tr>
-<tr>
-<td>this</td>
-<td>is a</td>
-<td>test</td>
-</tr>
-<tr>
-</tr>
-</table>
+  <span class="input-group-text" id="email"></span>
+  <input type="text" class="form-control" placeholder="Customer ID" aria-label="Email"
+      aria-describedby="basic-addon1" [(ngModel)]="custId">
+
+      <div>
+      <br>
+         <button type="button" class="button" (click)="viewCustomerOrder()">View</button>
+      </div>
+</div>
+
+<div *ngIf = "!isShow">
+<app-order></app-order>
 </div>
 <div>
+  
+         <button type="button" class="button" (click)="viewStock()">View Stock</button>
+        
+</div>
+<div id="itemlist" *ngIf = "!showItem">
+  <app-item ></app-item>
+</div>
 <div>
 Find by status:
 <ul>
@@ -42,8 +50,8 @@ Find by status:
 
 </div>
 <input type="submit" class="button" value="Search by Status"><br>
-</div>
-</div>
+
+
 <hr>
 
 Resolve order:
@@ -56,10 +64,11 @@ Resolve order:
 
 
 
-<div>
+<!--<div>
    <app-order *ngFor="let order of (orders | async)" [order]="order"> </app-order>
+   
 </div>
 
 <div>
   <app-item-container *ngFor="let item of (items | async)" [item]="item"></app-item-container>
-</div>
+</div>-->

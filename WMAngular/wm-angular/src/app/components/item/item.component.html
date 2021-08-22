@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+      <tr>
+      <th *ngFor = "let column of orderHeaders" scope="col">
+        {{column}}
+      <th>
+      </tr>
+    </thead>
+    <tbody>
+        
+    <tr *ngFor="let item of (items | async)">
+        <td>
+            {{item.itemName}}
+        </td>
+        <td>
+            {{item.invQuantity}}
+        </td>
+        <td>
+            {{item.itemPrice}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

@@ -5,25 +5,48 @@ import { EmployeeService } from '../../services/employee.service';
 import { Order } from '../../Order';
 import { Item } from 'src/app/Item';
 import { ItemService } from 'src/app/services/item.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee-page',
   templateUrl: './employee-page.component.html',
   styleUrls: ['./employee-page.component.css']
 })
 export class EmployeePageComponent implements OnInit {
+  custId: String="";
+  transactionId: string="";
+  isShow = true;
+  showItem = true;
+  empId: string = this.employeeService.employee.empId.toString();
+  res: Observable<String> = new Observable<String>();
   
+
+  constructor(private employeeService:EmployeeService,private itemService:ItemService,private router:Router) { }
+
+  // View order by customer id
+  // view order by status
+  // accept order
+  // complete order
+  // check stock
   
-  orders: Observable<Order[]> = new Observable<Order[]>();
-  items: Observable<Item[]> = new Observable<Item[]>();
+  viewCustomerOrder(): void{
+    this.isShow = !this.isShow;
+    this.employeeService.getCustomerOrder(this.custId);
+  }
 
-  constructor(private employeeService:EmployeeService,private itemService:ItemService) { }
-
-  ngOnInit(): void {
-    this.employeeService.getCustomerOrder(1);
-    this.orders = this.employeeService.subject;
-    console.log(this.orders); 
+  viewStock(): void{
+    this.showItem = false;
     this.itemService.getAllItems();
-    this.items = this.itemService.subject;
+  }
+
+  acceptOrder(): void{
+    this.res =this.employeeService.acceptOrder(this.transactionId, this.empId);
+    console.log(this.res);
+  }
+  ngOnInit(): void {
+    if (this.employeeService.employee.empId == 0) {
+      this.router.navigateByUrl('/home');
+    }
+    console.log(this.employeeService.employee.empId)
   }
 
 }

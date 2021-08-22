@@ -145,7 +145,7 @@ public class EmployeeController {
 					int qty = order.get(i).getOrderQty();
 					String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
 					
-					resOrder.add(new ResponseOrder(	qty, 
+					resOrder.add(new ResponseOrder(	order.get(i).getOrderId(), order.get(i).getTransId().getTransId(), order.get(i).getItemId().getItemId(),qty, 
 							order.get(i).getItemId().getItemName(),
 							order.get(i).getItemId().getItemPrice(),
 							order.get(i).getItemId().getInvQuantity(), 
@@ -158,7 +158,7 @@ public class EmployeeController {
 				int qty = order.get(i).getOrderQty();
 				String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
 				
-				resOrder.add(new ResponseOrder(	qty, 
+				resOrder.add(new ResponseOrder(	order.get(i).getOrderId(), order.get(i).getTransId().getTransId(), order.get(i).getItemId().getItemId(),qty, 
 						order.get(i).getItemId().getItemName(),
 						order.get(i).getItemId().getItemPrice(),
 						order.get(i).getItemId().getInvQuantity(), 
@@ -192,7 +192,7 @@ public class EmployeeController {
 					int qty = order.get(i).getOrderQty();
 					String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
 					
-					resOrder.add(new ResponseOrder(	qty, 
+					resOrder.add(new ResponseOrder(	order.get(i).getOrderId(), order.get(i).getTransId().getTransId(), order.get(i).getItemId().getItemId(),qty, 
 							order.get(i).getItemId().getItemName(),
 							order.get(i).getItemId().getItemPrice(),
 							order.get(i).getItemId().getInvQuantity(), 
@@ -205,7 +205,7 @@ public class EmployeeController {
 				int qty = order.get(i).getOrderQty();
 				String customer = order.get(i).getTransId().getCustId().getFirstName() + " " + order.get(i).getTransId().getCustId().getLastName();
 				
-				resOrder.add(new ResponseOrder(	qty, 
+				resOrder.add(new ResponseOrder(	order.get(i).getOrderId(), order.get(i).getTransId().getTransId(), order.get(i).getItemId().getItemId(),qty, 
 						order.get(i).getItemId().getItemName(),
 						order.get(i).getItemId().getItemPrice(),
 						order.get(i).getItemId().getInvQuantity(), 

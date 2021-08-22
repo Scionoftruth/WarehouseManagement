@@ -13,6 +13,8 @@ import { EmployeePageComponent } from './components/employee-page/employee-page.
 import { RegisterComponent } from './components/register/register.component';
 import { OrderComponent } from './components/order/order.component';
 import { ItemContainerComponent } from './components/item-container/item-container.component';
+import { ItemComponent } from './components/item/item.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { ItemContainerComponent } from './components/item-container/item-contain
     ProfileComponent,
     NavbarComponent,
     EmployeePageComponent, 
-    RegisterComponent, OrderComponent, ItemContainerComponent,
+    RegisterComponent, OrderComponent, ItemContainerComponent, ItemComponent, 
   ],
   imports: [
     BrowserModule,

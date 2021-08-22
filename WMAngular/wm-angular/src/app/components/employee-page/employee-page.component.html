@@ -5,52 +5,39 @@
 view order by status
 accept order
 complete order
-stock
+check stock
   -->
 
 <h1>Employee page</h1>
 <br>
-<div id="itemlist">
-<table>
-  <tr>
-  <th *ngFor = "let column of orderHeaders">
-    {{column}}
-  <th>
-  </tr>
-
-<tr *ngFor="let order of (orders | async)">
-  <td>
-      {{order.itemName}}
-  </td>
-  <td>
-      {{order.orderQty}}
-  </td>
-  <td>
-      {{order.itemPrice}}
-  </td>
-  <td>
-      {{order.invQuantity}}
-  </td>
-  <td>
-      {{order.status}}
-  </td>
-  <td>
-      {{order.customerName}}
-  </td>
-  <td>
-      {{order.employeeName}}
-  </td>
-  <td>
-      {{order.customerAddress}}
-  </td>
-  </tr>
-</table>
-
-  <app-item-container *ngFor="let item of (items | async)" [item]="item"></app-item-container><br>
 
 
+<h2>View Customer Order</h2>
+
+<div>
+  <span class="input-group-text" id="email"></span>
+  <input type="text" class="form-control" placeholder="Customer ID" aria-label="Email"
+      aria-describedby="basic-addon1" [(ngModel)]="custId">
+
+      <div>
+      <br>
+         <button type="button" class="button" (click)="viewCustomerOrder()">View</button>
+      </div>
+</div>
+
+<div *ngIf = "!isShow">
+<app-order></app-order>
 </div>
 <div>
+  
+         <button type="button" class="button" (click)="viewStock()">View Stock</button>
+        
+</div>
+<div id="itemlist" *ngIf = "!showItem">
+  <app-item ></app-item>
+</div>
+<div>
+
 Find by status:
 <ul>
 <label for="submitted">Submitted</label>&nbsp;

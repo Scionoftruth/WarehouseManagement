@@ -1,6 +1,9 @@
 package com.wm.models;
 
 public class ResponseOrder {
+	private int orderId;
+	private int transactionId;
+	private int itemId;
 	private int orderQty;
 	private String itemName;
 	private float itemPrice;
@@ -12,9 +15,12 @@ public class ResponseOrder {
 	
 	
 	
-	public ResponseOrder(int orderQty, String itemName, float itemPrice, int invQuantity, String status,
-			String customerName, String employeeName, String customerAddress) {
+	public ResponseOrder(int orderId, int transactionId, int itemId, int orderQty, String itemName, float itemPrice,
+			int invQuantity, String status, String customerName, String employeeName, String customerAddress) {
 		super();
+		this.orderId = orderId;
+		this.transactionId = transactionId;
+		this.itemId = itemId;
 		this.orderQty = orderQty;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
@@ -23,6 +29,24 @@ public class ResponseOrder {
 		this.customerName = customerName;
 		this.employeeName = employeeName;
 		this.customerAddress = customerAddress;
+	}
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public int getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
+	public int getItemId() {
+		return itemId;
+	}
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 	public int getOrderQty() {
 		return orderQty;
@@ -72,6 +96,9 @@ public class ResponseOrder {
 	public void setCustomerAddress(String customerAddress) {
 		this.customerAddress = customerAddress;
 	}
+	
+	
+	
 	
 	
 	

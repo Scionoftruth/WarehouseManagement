@@ -65,7 +65,7 @@ export class EmployeeService {
   }
 
   
-  getCustomerOrder(custId: number) {
+  getCustomerOrder(custId: String) {
     this.http.get<Order[]>(`http://localhost:8080/employee/customer/order/${custId}`)
     .pipe(
       catchError((e)=> {

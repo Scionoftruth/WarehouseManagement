@@ -1,4 +1,7 @@
 export interface Order {
+    orderId: number,
+    transactionId: number,
+    itemId: number,
     orderQty: number,
     itemName: string,
     itemPrice: number,

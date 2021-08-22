@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-page.component.css']
 })
 export class EmployeePageComponent implements OnInit {
+
   custId: String="";
   transactionId: string="";
   isShow = true;

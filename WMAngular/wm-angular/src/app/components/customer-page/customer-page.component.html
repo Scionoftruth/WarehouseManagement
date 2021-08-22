@@ -8,16 +8,16 @@
 
 
     <h3>What would you like to order?</h3>
-    <div class="input-group mb-3">
-        
-        
+     
+        <label for="Item">Item id:</label>
         <input type="text" class="form-control" placeholder="Item" aria-label="item" aria-describedby="basic-addon1"
             [(ngModel)]="itemId">
-        <br>
+        
+        <label for="Quantity">Item Quantity</label>
         <input type="text" class="form-control" placeholder="Quantity" aria-label="quantity"
             aria-describedby="basic-addon1" [(ngModel)]="itemQuantity">
-        <br>
-        </div>
+      
+       
     <br>
     <button type="button" class="btn btn-primary btn-sm" (click)="placeOrder()">Review and Submit</button>
     <div class="input-group mb-3">

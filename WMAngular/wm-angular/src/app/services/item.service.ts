@@ -21,7 +21,7 @@ export class ItemService {
   constructor(private http:HttpClient) { }
 
   getAllItems(){
-      this.http.get<Item[]>("http://localhost:8080/item/stock")
+      this.http.get<Item[]>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/item/stock")
       .pipe(
         catchError((e)=>{
           return throwError(e);
@@ -35,7 +35,7 @@ export class ItemService {
   }
 
   getItemById(itemId:number):Observable<Item>{
-      return this.http.get<Item>(`http://localhost:8080/item/stock/${itemId}`)
+      return this.http.get<Item>(`http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/item/stock/${itemId}`)
       .pipe(
         catchError((e)=>{
           return throwError(e);
@@ -45,7 +45,7 @@ export class ItemService {
   
 
   addItem(itemId:number,itemName:string,itemPrice:number,itemQuantity:number):Observable<String>{
-      return this.http.post<String>("http://localhost:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
+      return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
         headers:{
           "Content-Type":"application/json"
         }

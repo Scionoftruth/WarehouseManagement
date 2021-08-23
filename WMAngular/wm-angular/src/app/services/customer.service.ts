@@ -17,7 +17,7 @@ export class CustomerService {
   }
 
   login(email:string, password:string):Observable<Customer>{
-    return this.http.post<Customer>("http://localhost:8080/customer/login", JSON.stringify({email, password}),{
+    return this.http.post<Customer>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/customer/login", JSON.stringify({email, password}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -28,7 +28,7 @@ export class CustomerService {
   }
 
   register(firstName:string, lastName:string, address:string, city:string, state:string, zipCode:string, email:string, password:string):Observable<Customer>{
-    return this.http.post<Customer>("http://localhost:8080/customer/register", JSON.stringify({firstName,lastName,address,city,state,zipCode,email,password}),{
+    return this.http.post<Customer>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/customer/register", JSON.stringify({firstName,lastName,address,city,state,zipCode,email,password}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -39,7 +39,7 @@ export class CustomerService {
     }
 
   invoice(custId:number):Observable<String>{
-    return this.http.post<String>(`http://localhost:8080/customer/invoice`, JSON.stringify({custId}),{
+    return this.http.post<String>(`http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/customer/invoice`, JSON.stringify({custId}),{
       headers:{
         "Content-Type":"application/json"
       }

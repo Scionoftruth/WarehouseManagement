@@ -25,6 +25,7 @@ export class EmployeePageComponent implements OnInit {
   itemPrice: number=0
   itemQuantity: number=0
   itemId:number=0
+  loggedIn=''
   
   res: Observable<String> = new Observable<String>();
   status: string="";
@@ -102,6 +103,9 @@ export class EmployeePageComponent implements OnInit {
     if (Number(localStorage.getItem('empId')) == 0) {
       this.router.navigateByUrl('/home');
     }
+    //this.loggedIn = localStorage.getItem('email');
+    //let email=localStorage.getItem('email');
+    //document.getElementById("loggedin")?.innerText=`${email}`
   }
 
 }

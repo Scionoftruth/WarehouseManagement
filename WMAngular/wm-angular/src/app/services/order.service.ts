@@ -22,7 +22,7 @@ export class OrderService {
   constructor(private http: HttpClient, private customerService:CustomerService) { }
 
   createOrder(custId:number, item:number, quantity:number):Observable<String>{
-      return this.http.post<String>("http://localhost:8080/customer/neworder", JSON.stringify({custId,item,quantity}),{
+      return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/customer/neworder", JSON.stringify({custId,item,quantity}),{
         headers:{
           "Content-Type":"application/json"
         }
@@ -33,7 +33,7 @@ export class OrderService {
   }
 
   getAllOrders(){
-    this.http.get<Order[]>('http://localhost:8080/order/getorders')
+    this.http.get<Order[]>('http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/order/getorders')
     .pipe(
       catchError((e)=>{
         return throwError(e);
@@ -48,7 +48,7 @@ export class OrderService {
   }
 
   getOrderById(orderId:number):Observable<Order>{
-    return this.http.get<Order>(`http://localhost:8080/order/getorders/${orderId}`)
+    return this.http.get<Order>(`http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/order/getorders/${orderId}`)
     .pipe(
       catchError((e) => {
         return throwError(e);

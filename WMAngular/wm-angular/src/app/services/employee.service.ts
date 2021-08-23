@@ -21,7 +21,7 @@ export class EmployeeService {
    }
 
    login(email:string, password:string):Observable<Employee>{
-     return this.http.post<Employee>("http://localhost:8080/employee/login", JSON.stringify({email, password}),{
+     return this.http.post<Employee>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/login", JSON.stringify({email, password}),{
        headers:{
          "Content-Type":"application/json"
        }
@@ -32,7 +32,7 @@ export class EmployeeService {
    }
 
    acceptOrder(transactionId:Number, employeeId:Number):Observable<String>{
-    return this.http.post<String>("http://localhost:8080/employee/accept", JSON.stringify({transactionId, employeeId}),{
+    return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/accept", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -43,7 +43,7 @@ export class EmployeeService {
   }
 
   completeOrder(transactionId:Number, employeeId:Number):Observable<String>{
-    return this.http.post<String>("http://localhost:8080/employee/complete", JSON.stringify({transactionId, employeeId}),{
+    return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/complete", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -54,7 +54,7 @@ export class EmployeeService {
   }
 
   cancelOrder(transactionId:Number, employeeId:Number):Observable<String>{
-    return this.http.post<String>("http://localhost:8080/employee/cancel", JSON.stringify({transactionId, employeeId}),{
+    return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/cancel", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
       }
@@ -66,7 +66,7 @@ export class EmployeeService {
 
   
   getCustomerOrder(custId: Number) {
-    this.http.get<Order[]>(`http://localhost:8080/employee/customer/order/${custId}`)
+    this.http.get<Order[]>(`http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/customer/order/${custId}`)
     .pipe(
       catchError((e)=> {
         return throwError(e);
@@ -81,7 +81,7 @@ export class EmployeeService {
   }
 
   getByStatus(status: string) {
-    this.http.get<Order[]>(`http://localhost:8080/employee/bystatus/${status}`)
+    this.http.get<Order[]>(`http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/employee/bystatus/${status}`)
     .pipe(
       catchError((e)=> {
         return throwError(e);
@@ -95,7 +95,7 @@ export class EmployeeService {
   }
 
   addItem(itemId:number,itemName:string,itemPrice:number,itemQuantity:number){
-    return this.http.post<String>("http://localhost:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
+    return this.http.post<String>("http://ec2-18-118-134-128.us-east-2.compute.amazonaws.com:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
       headers:{
         "Content-Type":"application/json"
       }

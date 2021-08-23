@@ -1,34 +1,37 @@
+
+<link rel="stylesheet" href="register.component.css">
+
 <div class="jumbotron" id="registration-form">
     <h1 class="display-4">Welcome to the StockedMarket</h1>
     <h3>Please enter your personal information to create your new user profile</h3>
-    <div class="input-group mb-3">
+    <div style="text-align:center"class="input-group mb-3">
         <input type="text" class="form-control" placeholder="First Name" aria-label="firstName" aria-describedby="basic-addon1"[(ngModel)]="firstName">
-        <br>
-        <br>
+       
+        
 
         <input type="text" class="form-control" placeholder="Last Name" aria-label="lastNAme" aria-describedby="basic-addon1"[(ngModel)]="lastName">
-        <br>
-        <br>
+       
+        
         <input type="text" class="form-control" placeholder="Address" aria-label="adress" aria-describedby="basic-addon1"[(ngModel)]="address">
         <br>
-        <br>
+        
         <input type="text" class="form-control" placeholder="City" aria-label="city" aria-describedby="basic-addon1"[(ngModel)]="city">
         <br>
-        <br>
+        
         <input type="text" class="form-control" placeholder="State" aria-label="state" aria-describedby="basic-addon1"[(ngModel)]="state">
         <br>
-        <br>
+        
         <input type="text" class="form-control" placeholder="Zip-Code" aria-label="zipcode" aria-describedby="basic-addon1"[(ngModel)]="zipcode">
         <br>
-        <br>
+        
 
         <input type="text" class="form-control" placeholder="Email" aria-label="email" aria-describedby="basic-addon1"[(ngModel)]="email">
         <br>
-        <br>
+        
 
         <input type="text" class="form-control" placeholder="Password" aria-label="password" aria-describedby="basic-addon1"[(ngModel)]="password">
         <br>
-        <br>
+        
     </div>
     <br>
     <button type="button" class="btn btn-primary btn-sm" (click)="createReg()">Register</button>
@@ -37,25 +40,5 @@
     </div>
     <br>
 
-    
-    <div class="preview">
-        <p>{{firstName}}</p>
-        <br>
-        <p>{{lastName}}</p>
-        <br>
-        <p>{{address}}</p>
-        <br>
-        <p>{{city}}</p>
-        <br>
-        <p>{{state}}</p>
-        <br>
-        <p>{{zipcode}}</p>
-        <br>
-        <p>{{email}}</p>
-        <br>
-        <p>{{password}}</p>
-        <br>
-
-    </div>
 
 </div>

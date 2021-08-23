@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="employee-page.component.css"> <!--This is for css-->
-
+<app-navbar></app-navbar>
 
 <!--  View order by customer id
 view order by status
@@ -12,65 +12,82 @@ check stock
 <br>
 
 
-<h2>View Customer Order</h2>
+<h2>View Customer Orders</h2>
 
-<div>
+<!--<div>
   <span class="input-group-text" id="email"></span>
-  <input type="text" class="form-control" placeholder="Customer ID" aria-label="Email"
-      aria-describedby="basic-addon1" [(ngModel)]="custId">
-
-      <div>
+ <input type="text" class="form-control" placeholder="Customer ID" aria-label="Email"
+      aria-describedby="basic-addon1" maxlength="8" size="8" [(ngModel)]="custId">
       <br>
-         <button type="button" class="button" (click)="viewCustomerOrder()">View</button>
-      </div>
-</div>
+         <button type="button" class="button" (click)="viewCustomerOrder()">View by CustomerID</button>
+ </div>   
+-->
 
-<div *ngIf = "!isShow">
-<app-order></app-order>
-</div>
+<div class="none">
 <div>
-  
-         <button type="button" class="button" (click)="viewStock()">View Stock</button>
-        
+Find by status: <br>
+<ul>
+<label for="submitted">Submitted</label>&nbsp;
+<input type="radio" id="submitted" name="status" value="Submitted " [(ngModel)]="status"><br>
+<label for="pending">Pending&nbsp;&nbsp;&nbsp;&nbsp;</label>&nbsp;
+<input type="radio" id="pending" name="status" value="Pending " [(ngModel)]="status"><br>
+<label for="canceled">Canceled&nbsp;&nbsp;&nbsp;</label>&nbsp;
+<input type="radio" id="canceled" name="status" value="Canceled " [(ngModel)]="status"><br>
+<label for="completed">Complete&nbsp;&nbsp;&nbsp;</label>&nbsp;
+<input type="radio" id="completed" name="status" value="Completed "[(ngModel)]="status">
+</ul>
+</div><div>
+<input type="submit" class="button" (click)="viewByStatus()" value="Search by Status"><br>
+<button type="button" class="button" (click)="viewStock()">View Stock</button> 
+<button type="button" class="button" (click)="viewAllOrders()">All Orders</button>
+<button type="button" class="button" (click)="viewCustomerOrder()">View by CustomerID</button></div>
+ <div> <label for="Customer ID">Customer ID:</label><br>
+   <input type="text" class="form-control" placeholder="Customer ID" aria-label="Email"
+      aria-describedby="basic-addon1" maxlength="8" size="8" style="width:200px" [(ngModel)]="custId"></div>
+      <br><br>
+      
 </div>
 <div id="itemlist" *ngIf = "!showItem">
   <app-item ></app-item>
 </div>
-<div>
-
-Find by status: 
-<ul>
-<label for="submitted">Submitted</label>&nbsp;
-<input type="radio" id="submitted" name="status" value="Submitted ">&nbsp;&nbsp;&nbsp;
-<label for="pending">Pending</label>&nbsp;
-<input type="radio" id="pending" name="status" value="Pending "><br>
-<label for="canceled">Cancel</label>&nbsp;
-<input type="radio" id="canceled" name="status" value="Canceled ">&nbsp;&nbsp;&nbsp;
-<label for="completed">Complete</label>&nbsp;
-<input type="radio" id="complete" name="status" value="Complete "><br>
-</ul>
-
+<div *ngIf = "!isShow">
+  <app-order></app-order> 
+  </div>
+<div *ngIf = "!showByStatus">
+<app-order></app-order>
 </div>
-<input type="submit" class="button" value="Search by Status"><br>
-
-
-<hr>
-
-Resolve order:
-
-<label for="orderId">Input the order id to change:</label>
-<input type="text" id="orderid" maxlength="6"><br>
-<input type="button" id="setPending" class="button" value="Accept">
-<input type="button" id="setCancel" class="button" value="Cancel">
-<input type="button" id="setComplete" class="button" value="Complete"><br>
-
-
-
-<!--<div>
-   <app-order *ngFor="let order of (orders | async)" [order]="order"> </app-order>
-   
+<div *ngIf = "!showForModify">
+<app-order></app-order>
 </div>
 
-<div>
-  <app-item-container *ngFor="let item of (items | async)" [item]="item"></app-item-container>
-</div>-->
+
+<div class="resolveOrder">
+<label for="orderId">Input the order id to change: &nbsp;&nbsp; </label>
+<input type="text" id="orderid" maxlength="6" [(ngModel)]="transId" style="color: black;"><br>
+<input type="button" id="setPending" class="button" value="Accept" (click)="acceptOrder()">
+<input type="button" id="setCancel" class="button" value="Cancel" (click)="cancelOrder()">
+<input type="button" id="setComplete" class="button" value="Complete" (click)="completeOrder()"><br>
+</div>
+<br>
+<h3 style="width:43%;">Add Item</h3>
+<br>
+<div class="div">
+
+  <form>
+    <label for="itemId">Item ID</label>
+    <input type="text" id="itemId" name="itemId" [(ngModel)]="itemId" placeholder="Item ID">
+
+    <label for="itemName">Item Name</label>
+    <input type="text" id="itemName" name="itemName" [(ngModel)]="itemName" placeholder="Item Name">
+
+    <label for="itemQuantity">Item Quantity</label>
+    <input type="text" id="itemQuantity" name="itemQuantity" [(ngModel)]="itemQuantity" placeholder="Item Quantity">
+
+    <label for="itemPrice">Item Price</label>
+    <input type="text" id="itemPrice" name="itemPrice" [(ngModel)]="itemPrice" placeholder="Item Price">
+
+    <input type="submit" value="Submit" (click)="addItem()">
+  </form>
+</div>
+
+

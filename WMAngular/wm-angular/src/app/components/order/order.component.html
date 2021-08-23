@@ -10,13 +10,16 @@
     <tbody>
     <tr *ngFor="let order of (orders | async)">
         <td>
+            {{order.transactionId}}
+        </td>
+        <td>
             {{order.itemName}}
         </td>
         <td>
             {{order.orderQty}}
         </td>
         <td>
-            {{order.itemPrice}}
+            &euro;{{(order.itemPrice * order.orderQty).toFixed(2)}}
         </td>
         <td>
             {{order.invQuantity}}
@@ -34,6 +37,6 @@
             {{order.customerAddress}}
         </td>
       </tr>
-    </tbody>
+    </tbody> 
   </table>
 

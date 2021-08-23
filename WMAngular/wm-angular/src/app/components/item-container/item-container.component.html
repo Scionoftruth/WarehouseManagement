@@ -1,8 +1,23 @@
-<div class="items-container">
-    <div class="item">
-        <h2>itemName: {{item.itemName}}</h2>
-        <p>itemId: {{item.itemId}}</p>
-        <p>itemQuantity: {{item.invQuantity}}</p>
-        <p>itemPrice: {{item.itemPrice}}</p>
-    </div>
-</div>
+<table class="table">
+    <thead>
+      <tr>
+      <th *ngFor = "let column of orderHeaders" scope="col">
+        {{column}}
+      <th>
+      </tr>
+    </thead>
+    <tbody>
+        
+    <tr *ngFor="let item of (items | async)">
+        <td>
+            {{item.itemId}}
+        </td>
+        <td>
+            {{item.itemName}}
+        </td>
+        <td>
+            &euro;{{item.itemPrice}}
+        </td>
+      </tr>
+    </tbody>
+  </table>

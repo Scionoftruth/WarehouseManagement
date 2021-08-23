@@ -1,23 +1,27 @@
+<app-navbar></app-navbar>
 <link rel="stylesheet" href="customer-page.component.css"> <!--This is for css-->
     
     <h1 class="display-4">Welcome to the StockedMarket Customer Ordering Form</h1>
 
-    <div>
-        <app-item ></app-item>
-    </div>
-
-
+<div class="split">
+    <div class="itemlist">
+        <app-item-container ></app-item-container>
+    
+  
+<hr>
     <h3>What would you like to order?</h3>
-     
-        <label for="Item">Item id:</label>
+    <br>
+
+        <p><label for="Item" class="floatleft">Item id:</label>
         <input type="text" class="form-control" placeholder="Item" aria-label="item" aria-describedby="basic-addon1"
-            [(ngModel)]="itemId">
+            [(ngModel)]="itemId" maxlength="12" size="12">
         
-        <label for="Quantity">Item Quantity</label>
+        <label for="Quantity" class="floatleft">Item Quantity</label>
         <input type="text" class="form-control" placeholder="Quantity" aria-label="quantity"
-            aria-describedby="basic-addon1" [(ngModel)]="itemQuantity">
-      
-       
+            aria-describedby="basic-addon1" [(ngModel)]="itemQuantity" maxlength="12" size="12"></p>
+      </div>
+    </div>
+  
     <br>
     <button type="button" class="btn btn-primary btn-sm" (click)="placeOrder()">Review and Submit</button>
     <div class="input-group mb-3">
@@ -27,27 +31,27 @@
     <button type="button" class="btn btn-danger btn-sm" (click)="register()">Register</button> -->
 
 
-    <div class="preview">
+   <!-- <div class="preview">
         <p>{{firstName}}</p>
         <br>
         <p>{{lastName}}</p>
         <br>
         <p>{{email}}</p>
         <br>
-        <!--<p>{{streetNumber}}</p>
+        <p>{{streetNumber}}</p>
         <br>
         <p>{{address1}}</p>
-        <br>-->
+        <br>
         <p>{{address}}</p>
         <br>
         <p>{{zipCode}}</p>
         <br>
-        <!--<p>{{phoneNumber}}</p>
-        <br>-->
+        <p>{{phoneNumber}}</p>
+        <br>
         <p>{{itemId}}</p>
         <br>
         <p>{{itemQuantity}}</p>
-        <!--<br>
+        <br>
         <p>{{item2}}</p>
         <br>
         <p>{{quantity2}}</p>
@@ -57,7 +61,7 @@
         <p>{{quantity3}}</p>
         <br>-->
 
-    </div>
+ 
 
 
 

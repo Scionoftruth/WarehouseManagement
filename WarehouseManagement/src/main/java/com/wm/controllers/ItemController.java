@@ -46,12 +46,25 @@ public class ItemController {
 	 
 	 @PostMapping("/stock/add")
 	 public ResponseEntity<String> addItem(@RequestBody LinkedHashMap<String, String> item) {
-		Item i = iServ.getItemById(Integer.parseInt(item.get("itemId")));
-		if(i == null){
+		List<Item> iLists= iServ.getAllItems();
+		 Item nullItem = new Item();
+		 
+		 for (int j = 0; j<iLists.size(); j++) {
+			 if( iLists.get(j).getItemId() == Integer.parseInt(item.get("itemId")) ) {
+				 nullItem = iLists.get(j);
+				 break;
+			 }else {
+				 nullItem = null;
+			 }
+		 }
+		 
+		if(nullItem == null){
 			Item temp = new Item(item.get("itemName"),Float.parseFloat(item.get("itemPrice")),Integer.parseInt(item.get("itemQuantity")));
 			iServ.addItem(temp);
 			return new ResponseEntity<>("Item Was Successfully Added",HttpStatus.OK);
 		}
+		
+		Item i = iServ.getItemById(Integer.parseInt(item.get("itemId")));
 		iServ.updateStock(i, Integer.parseInt(item.get("itemQuantity")));
 		return new ResponseEntity<>("Item Was Successfully Updated",HttpStatus.OK);
 	 }

@@ -70,10 +70,11 @@ public class CustomerController {
 			next.setTransId(trans);
 			oServ.addOrder(next);	
 			tServ.registerTransaction(trans);
+			System.out.println(next);
 			
 
 		
-		//mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
+		mailServ.sendMail(trans.getTransId(), Integer.parseInt(order.get("custId")));
 		return new ResponseEntity<>("Order Created",HttpStatus.OK);
 
 	}

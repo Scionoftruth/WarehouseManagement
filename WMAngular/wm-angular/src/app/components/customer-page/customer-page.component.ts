@@ -31,24 +31,34 @@ export class CustomerPageComponent implements OnInit {
   //quantity2: string = ""
   //item3: string = ""
   //quantity3: string = ""
-  custId:number=this.customerService.customer.custId
+  custId:number=Number(localStorage.getItem('custId'))
   items: Observable<Item[]> = new Observable<Item[]>();
   itemQuantity: number=0
 
   placeOrder():void{
     //console.log(this.custId)
+    alert("Clicked")
     this.orderService.createOrder(this.custId,this.itemId,this.itemQuantity)
+    .subscribe(data=>{this.orderService.resData=data});
+    console.log(this.custId)
+    console.log(this.itemQuantity)
+    console.log(this.itemId)
+    //console.log(this.orderService)
   }
 
   invoice():void{
     this.customerService.invoice(this.custId);
   }
 
+
   //register?
   //
 
 
   ngOnInit(): void {
+    if (Number(localStorage.getItem('custId')) == 0) {
+      this.router.navigateByUrl('/home');
+    }
     this.itemService.getAllItems();
     this.items = this.itemService.subject;
     console.log(this.items);

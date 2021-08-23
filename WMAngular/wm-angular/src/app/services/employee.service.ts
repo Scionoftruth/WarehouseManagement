@@ -10,11 +10,11 @@ import {Employee} from '../Employee';
   providedIn: 'root'
 })
 export class EmployeeService {
-
+  
   orders: Order[] = [];
   subject: Subject<Order[]> = new Subject<Order[]>();
   constructor(private http: HttpClient) { }
-
+  resData: String='';
    employee:Employee= {
      empId: 0,
      email: ''
@@ -31,7 +31,7 @@ export class EmployeeService {
        }));
    }
 
-   acceptOrder(transactionId:string, employeeId:string):Observable<String>{
+   acceptOrder(transactionId:Number, employeeId:Number):Observable<String>{
     return this.http.post<String>("http://localhost:8080/employee/accept", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
@@ -42,7 +42,7 @@ export class EmployeeService {
       }));
   }
 
-  completeOrder(transactionId:string, employeeId:string):Observable<String>{
+  completeOrder(transactionId:Number, employeeId:Number):Observable<String>{
     return this.http.post<String>("http://localhost:8080/employee/complete", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
@@ -53,7 +53,7 @@ export class EmployeeService {
       }));
   }
 
-  cancelOrder(transactionId:string, employeeId:string):Observable<String>{
+  cancelOrder(transactionId:Number, employeeId:Number):Observable<String>{
     return this.http.post<String>("http://localhost:8080/employee/cancel", JSON.stringify({transactionId, employeeId}),{
       headers:{
         "Content-Type":"application/json"
@@ -65,7 +65,7 @@ export class EmployeeService {
   }
 
   
-  getCustomerOrder(custId: String) {
+  getCustomerOrder(custId: Number) {
     this.http.get<Order[]>(`http://localhost:8080/employee/customer/order/${custId}`)
     .pipe(
       catchError((e)=> {
@@ -92,6 +92,17 @@ export class EmployeeService {
           this.subject.next(this.orders);
         }
       )
+  }
+
+  addItem(itemId:number,itemName:string,itemPrice:number,itemQuantity:number){
+    return this.http.post<String>("http://localhost:8080/item/stock/add", JSON.stringify({itemId,itemName,itemPrice,itemQuantity}),{
+      headers:{
+        "Content-Type":"application/json"
+      }
+    })
+      .pipe(catchError((e)=>{
+        return throwError(e);
+      }));
   }
 
 }

@@ -10,13 +10,16 @@
         
     <tr *ngFor="let item of (items | async)">
         <td>
+          {{item.itemId}}
+        </td>
+        <td>
             {{item.itemName}}
         </td>
         <td>
             {{item.invQuantity}}
         </td>
         <td>
-            {{item.itemPrice}}
+            &euro;{{item.itemPrice}}
         </td>
       </tr>
     </tbody>

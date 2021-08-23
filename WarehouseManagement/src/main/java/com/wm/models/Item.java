@@ -54,6 +54,15 @@ public class Item {
 		this.buffer = 0;
 	}
 	
+	public Item(int itemId, String itemName, float itemPrice, int invQuantity) {
+		super();
+		this.itemId=itemId;
+		this.itemName=itemName;
+		this.itemPrice=itemPrice;
+		this.invQuantity=invQuantity;
+		this.buffer=0;
+	}
+	
 	
 	
 	

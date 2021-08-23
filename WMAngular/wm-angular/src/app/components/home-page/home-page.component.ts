@@ -17,6 +17,7 @@ export class HomePageComponent implements OnInit {
   email: string='';
   password: string='';
   error: boolean=false;
+  showForModify = true;
 
   constructor(private customerService:CustomerService,private employeeService:EmployeeService, private router:Router) { }
   
@@ -45,10 +46,13 @@ export class HomePageComponent implements OnInit {
       .subscribe(data=>{this.customerService.customer = {
         custId: data.custId,
         email: this.email
+        //localStorage.setItem("")
       }
+      localStorage.setItem('custId',`${data.custId}`)
+      localStorage.setItem('email',`${this.email}`);
       this.error=false;
       this.router.navigateByUrl('/customer-page');
-      //console.log(data);
+      console.log(data);
       //console.log(data.custId);
     },
       (error)=>this.error=true); 
@@ -62,10 +66,21 @@ export class HomePageComponent implements OnInit {
         empId: data.empId,
         email:this.email
       }
+      localStorage.setItem('empId',`${data.empId}`)
+      localStorage.setItem('email',`${this.email}`);
       this.error=false;
       this.router.navigateByUrl('/employee-page');
     },
       (error)=>this.error=true);
+  }
+
+  register(): void{
+    //this.orderService.getAllOrders();
+    //this.showForModify = true;
+  }
+  registrationForm():void{
+      this.router.navigateByUrl('/registration');
+
   }
 
   ngOnInit(): void {

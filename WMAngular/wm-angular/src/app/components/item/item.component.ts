@@ -9,7 +9,7 @@ import { ItemService } from 'src/app/services/item.service';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  orderHeaders= ["Item Name","Quantity","Price"]
+  orderHeaders= ["Item Id","Item Name","Quantity","Price"]
   items: Observable<Item[]> = new Observable<Item[]>();
   constructor(private itemService:ItemService) { }
 

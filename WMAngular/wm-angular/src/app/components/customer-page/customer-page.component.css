@@ -34,13 +34,15 @@ nav {
 div {
     margin: 1%;
     text-align: center;
-    display:flex;
-    flex-grow: 2;
+    
     background-color: #212128;
     border-radius: 5%;
     border-style: double;
     border-width: 4px;
 }
+.split {
+    column-number:2;
+    }
 
 ul {
     list-style: none;
@@ -65,4 +67,8 @@ ul {
 
 .customer {
     display:none
+}
+
+.itemlist {
+    font-size:200%;
 }

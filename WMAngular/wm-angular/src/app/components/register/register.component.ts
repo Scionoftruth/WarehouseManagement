@@ -29,13 +29,24 @@ export class RegisterComponent implements OnInit {
       .subscribe(data=>{this.customerService.customer = {
         custId: data.custId,
         email:this.email
+
+        
       }
       this.error=false;
       this.router.navigateByUrl('/home-page');
     },
       (error)=>this.error=true);
+    this.firstName = ""
+    this.lastName = ""
+    this.password = ""
+    this.address = ""
+    this.city = ""
+    this.email = ""
+    this.state = ""
+    this.zipcode = ""
   
   }
+  
 
 
   ngOnInit(): void {

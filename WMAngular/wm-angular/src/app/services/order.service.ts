@@ -16,12 +16,13 @@ export class OrderService {
   orders: Order[]=[];
   subject: Subject<Order[]> = new Subject<Order[]>();
   orderId:number=0;
+  resData: String ="";
 
 
   constructor(private http: HttpClient, private customerService:CustomerService) { }
 
-  createOrder(custId:number, itemId:number, quantity:number):Observable<String>{
-      return this.http.post<String>("http://localhost:8080/customer/neworder", JSON.stringify({custId,itemId,quantity}),{
+  createOrder(custId:number, item:number, quantity:number):Observable<String>{
+      return this.http.post<String>("http://localhost:8080/customer/neworder", JSON.stringify({custId,item,quantity}),{
         headers:{
           "Content-Type":"application/json"
         }
@@ -41,6 +42,7 @@ export class OrderService {
         (data) => {
           this.orders = data;
           this.subject.next(this.orders);
+          //console.log(data)
         }
       )
   }

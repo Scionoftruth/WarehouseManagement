@@ -6,11 +6,13 @@ import { EmployeePageComponent } from './components/employee-page/employee-page.
 import { CustomerPageComponent } from './components/customer-page/customer-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeGuard } from './guards/home.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {path:'home', component:HomePageComponent},
 {path:'employee-page', component:EmployeePageComponent/*, canActivate: [HomeGuard]*/},
 {path:'customer-page', component:CustomerPageComponent/*, canActivate: [HomeGuard]*/},
+{path:'registration',component:RegisterComponent},
   {path:'profile', component:ProfileComponent},
   {path:'', redirectTo:'/home',pathMatch:'full'}
 ];

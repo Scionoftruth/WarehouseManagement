@@ -10,16 +10,13 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class ItemContainerComponent implements OnInit {
 
-  @Input() item:Item = {
-    itemId: 0,
-    itemName: '',
-    itemPrice: 0,
-    invQuantity: 0
-  }
+  orderHeaders= ["Item Id","Item Name","Price"]
+  items: Observable<Item[]> = new Observable<Item[]>();
 
-  constructor() { }
+  constructor(private itemService:ItemService) { }
 
   ngOnInit(): void {
+    this.items = this.itemService.subject;
     
   }
 
